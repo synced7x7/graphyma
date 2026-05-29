@@ -166,6 +166,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: block;
 }
 
+@media (max-width: 900px) {
+  .heritage-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+}
+
 .gradient-text {
   background: linear-gradient(135deg, #fff 0%, var(--accent) 60%, var(--accent-2) 100%);
   -webkit-background-clip: text;

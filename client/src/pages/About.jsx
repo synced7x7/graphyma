@@ -14,6 +14,7 @@ const PILLARS = [
     num: '01',
     title: 'Satellite Data Analysis',
     body: 'Deep expertise in processing and interpreting multispectral, SAR, and hyperspectral imagery from Sentinel, Landsat, and commercial platforms for real-world decision support.',
+    link: '/services/remote-sensing',
     icon: (
       <svg viewBox="0 0 40 40" fill="none" style={{ width: 28, height: 28 }}>
         <circle cx="20" cy="20" r="9" stroke="currentColor" strokeWidth="1.5" />
@@ -27,6 +28,7 @@ const PILLARS = [
     num: '02',
     title: 'Digital Consultancy',
     body: 'Strategic guidance on digital transformation, EO platform adoption, and data infrastructure — bridging the gap between cutting-edge satellite capabilities and practical organisational use.',
+    link: '/services/communications',
     icon: (
       <svg viewBox="0 0 40 40" fill="none" style={{ width: 28, height: 28 }}>
         <rect x="4" y="8" width="32" height="22" rx="2" stroke="currentColor" strokeWidth="1.5"/>
@@ -44,6 +46,7 @@ const PILLARS = [
     num: '03',
     title: 'Professional Training',
     body: 'Capacity-building programmes for institutions, businesses, and researchers — from foundational EO concepts to advanced remote sensing workflows and platform-specific skills.',
+    link: '/services/trainings',
     icon: (
       <svg viewBox="0 0 40 40" fill="none" style={{ width: 28, height: 28 }}>
         <path d="M20 5L38 14L20 23L2 14L20 5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
@@ -58,6 +61,7 @@ const PILLARS = [
     num: '04',
     title: 'Project Management',
     body: 'End-to-end coordination of EO and digital projects — from inception to delivery — across multi-stakeholder European and international contexts, with a focus on impact and efficiency.',
+    link: '/services/project-management',
     icon: (
       <svg viewBox="0 0 40 40" fill="none" style={{ width: 28, height: 28 }}>
         <rect x="3"  y="5" width="15" height="10" rx="2" stroke="currentColor" strokeWidth="1.5"/>
@@ -75,6 +79,16 @@ const VALUES = [
   { label: 'Ambitious',  desc: 'Startup drive combined with institutional-grade expertise and standards.' },
   { label: 'Collaborative', desc: 'Built on years of partnership with Europe\'s leading EO bodies and institutions.' },
 ]
+
+const pillarHover = {
+  rest: { y: 0, boxShadow: 'none' },
+  hover: { y: -6, boxShadow: '0 0 30px rgba(13,255,196,0.12)' },
+}
+
+const scanLine = {
+  rest: { top: '-110%', opacity: 0 },
+  hover: { top: '120%', opacity: 1, transition: { duration: 0.7, ease: 'linear' } },
+}
 
 const STORY_PARAS = [
   {
@@ -238,7 +252,7 @@ export default function About() {
       {/* ══════════════════════════════════════
           CAPABILITIES
       ══════════════════════════════════════ */}
-      <section className="section" style={{ position: 'relative' }}>
+      <section id="pillars" className="section" style={{ position: 'relative', scrollMarginTop: 120 }}>
         <div className="glow-tl" />
         <div className="container">
           <div style={{ marginBottom: '3.5rem' }}>
@@ -258,40 +272,57 @@ export default function About() {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
-            {PILLARS.map(({ num, title, body, icon }, i) => (
-              <motion.div
-                key={num}
-                className="glass"
-                initial={{ opacity: 0, y: 36 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ delay: i * 0.1, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-                style={{ padding: '2rem', position: 'relative', overflow: 'hidden', borderRadius: 'var(--radius)' }}
-              >
-                <div style={{
-                  position: 'absolute', top: -8, right: 12,
-                  fontFamily: 'var(--font-display)', fontSize: '5rem',
-                  fontWeight: 800, color: 'rgba(13,255,196,0.04)',
-                  lineHeight: 1, userSelect: 'none',
-                }}>{num}</div>
+            {PILLARS.map(({ num, title, body, icon, link }, i) => (
+              <Link key={num} to={link} style={{ textDecoration: 'none' }}>
+                <motion.div
+                  className="glass"
+                  initial={{ opacity: 0, y: 36 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  variants={pillarHover}
+                  initial="rest"
+                  whileHover="hover"
+                  animate="rest"
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ delay: i * 0.1, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ padding: '2rem', position: 'relative', overflow: 'hidden', borderRadius: 'var(--radius)', cursor: 'pointer' }}
+                >
+                  <div style={{
+                    position: 'absolute', top: -8, right: 12,
+                    fontFamily: 'var(--font-display)', fontSize: '5rem',
+                    fontWeight: 800, color: 'rgba(13,255,196,0.04)',
+                    lineHeight: 1, userSelect: 'none',
+                  }}>{num}</div>
 
-                <div style={{
-                  width: 54, height: 54, borderRadius: 13,
-                  background: 'rgba(13,255,196,0.07)', border: '1px solid rgba(13,255,196,0.14)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: '#0DFFC4', marginBottom: '1.4rem',
-                }}>
-                  {icon}
-                </div>
+                  <div style={{
+                    width: 54, height: 54, borderRadius: 13,
+                    background: 'rgba(13,255,196,0.07)', border: '1px solid rgba(13,255,196,0.14)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: '#0DFFC4', marginBottom: '1.4rem',
+                  }}>
+                    {icon}
+                  </div>
 
-                <h3 style={{
-                  fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 700,
-                  color: '#EBF7F5', marginBottom: '0.75rem', letterSpacing: '0.01em', lineHeight: 1.3,
-                }}>
-                  {title}
-                </h3>
-                <p style={{ fontSize: '0.87rem', color: '#6BBAB5', lineHeight: 1.75 }}>{body}</p>
-              </motion.div>
+                  <h3 style={{
+                    fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 700,
+                    color: '#EBF7F5', marginBottom: '0.75rem', letterSpacing: '0.01em', lineHeight: 1.3,
+                  }}>
+                    {title}
+                  </h3>
+                  <p style={{ fontSize: '0.87rem', color: '#6BBAB5', lineHeight: 1.75 }}>{body}</p>
+
+                  <motion.div
+                    variants={scanLine}
+                    style={{
+                      position: 'absolute',
+                      left: 0,
+                      right: 0,
+                      height: 60,
+                      background: 'linear-gradient(transparent, rgba(13,255,196,0.08), transparent)',
+                      pointerEvents: 'none',
+                    }}
+                  />
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>

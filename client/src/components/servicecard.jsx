@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const ICONS = {
   remote: (
@@ -84,10 +85,8 @@ export default function ServiceCard({ number, icon, title, description, link, de
         cursor: 'pointer',
       }}
     >
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
+      <Link
+        to={link}
         style={{ display: 'block', textDecoration: 'none' }}
       >
         <div style={{
@@ -201,7 +200,7 @@ export default function ServiceCard({ number, icon, title, description, link, de
             </svg>
           </div>
         </div>
-      </a>
+      </Link>
     </motion.div>
   )
 }

@@ -8,9 +8,9 @@ import AnimatedCounter from '../components/AnimatedCounter'
 
 /* ── Page variants ─────────────────────────────── */
 const page = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
-  exit:    { opacity: 0, transition: { duration: 0.35 } },
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+  exit:    { opacity: 0, y: -30, transition: { duration: 0.35, ease: [0.4, 0, 1, 1] } },
 }
 
 /* ── Data ──────────────────────────────────────── */
@@ -19,28 +19,28 @@ const SERVICES = [
     number: '01', icon: 'remote',
     title: 'Remote Sensing Consultancy',
     description: 'Expert guidance on satellite data acquisition, processing, and interpretation for environmental, agricultural, and urban decision-making.',
-    link: 'https://www.esa.int/Applications/Observing_the_Earth',
+    link: '/services/remote-sensing',
     delay: 0,
   },
   {
     number: '02', icon: 'comms',
     title: 'Communications & User Uptake',
     description: 'Bridging the gap between complex Earth Observation capabilities and real-world users through strategic communication and targeted outreach.',
-    link: 'https://www.copernicus.eu',
+    link: '/services/communications',
     delay: 0.1,
   },
   {
     number: '03', icon: 'training',
     title: 'Trainings',
     description: 'Tailored training programmes designed to upskill professionals in satellite data analysis, GIS platforms, and EO data services.',
-    link: 'https://eo4geo.eu',
+    link: '/services/trainings',
     delay: 0.2,
   },
   {
     number: '04', icon: 'pm',
     title: 'Project Management',
     description: 'Strategic oversight and coordination of Earth Observation projects across public, private, and international stakeholder environments.',
-    link: 'https://www.esa.int/About_Us/ESA_Projects',
+    link: '/services/project-management',
     delay: 0.3,
   },
 ]
@@ -319,7 +319,7 @@ export default function Home() {
       {/* ══════════════════════════════════════
           SERVICES
       ══════════════════════════════════════ */}
-      <section className="section" style={{ position: 'relative' }}>
+      <section id="services" className="section" style={{ position: 'relative' }}>
         <div className="glow-br" />
         <div className="container">
           <motion.span className="section-label" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
