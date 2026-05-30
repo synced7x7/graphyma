@@ -49,11 +49,13 @@ export default function Footer() {
           {/* Services */}
           <div>
             <p className="footer-section-title">Services</p>
-            <div className="footer-services-list">
+            <nav className="footer-nav">
               {['Remote Sensing', 'Communications', 'Trainings', 'Project Management'].map(s => (
-                <span key={s} className="footer-service-item">{s}</span>
+                <Link key={s} to={`/services/${s.toLowerCase().replace(' ', '-')}`} className="footer-link">
+                  {s}
+                </Link>
               ))}
-            </div>
+            </nav>
           </div>
         </div>
 

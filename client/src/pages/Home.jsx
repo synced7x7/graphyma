@@ -257,7 +257,7 @@ export default function Home() {
               className="home-hero-right"
               initial={{ opacity: 0, scale: 0.82 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{  duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="home-globe-wrap">
                 <EarthGlobe />

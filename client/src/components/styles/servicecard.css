@@ -1,7 +1,10 @@
-.service-card { cursor: pointer; }
-.service-link { display: block; text-decoration: none; }
+.service-card { cursor: pointer; height: 100%; }
+.service-link { display: block; height: 100%; text-decoration: none; }
 .service-card-inner {
   position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   padding: 2.25rem;
   background: rgba(13,255,196,0.025);
   border: 1px solid rgba(13,255,196,0.08);
