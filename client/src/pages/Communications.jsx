@@ -123,6 +123,33 @@ export default function Communications() {
                       animate={{ opacity: [0.15, 0.5, 0.15] }}
                       transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
                     />
+                    {/* Rotating belt around the central node */}
+                    <motion.g
+            
+                      transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
+                      style={{ transformOrigin: '160px 130px' }}
+                    >
+                      <ellipse
+                        cx="160"
+                        cy="130"
+                        rx="50"
+                        ry="12"
+                        transform="rotate(-20 160 130)"
+                        fill="rgba(13,255,196,0.06)"
+                        stroke="rgba(13,255,196,0.22)"
+                        strokeWidth="1.2"
+                      />
+                      <ellipse
+                        cx="160"
+                        cy="130"
+                        rx="34"
+                        ry="8"
+                        transform="rotate(-20 160 130)"
+                        fill="rgba(13,255,196,0.02)"
+                        stroke="rgba(13,255,196,0.12)"
+                        strokeWidth="0.8"
+                      />
+                    </motion.g>
 
                     {OUTER_NODES.map((node) => (
                       <g key={node.id}>

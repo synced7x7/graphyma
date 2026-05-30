@@ -30,7 +30,7 @@
 .service-icon-svg { width: 36px; height: 36px; }
 .service-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: #EBF7F5; letter-spacing: 0.02em; margin-bottom: 0.75rem; line-height: 1.3; }
 .service-desc { font-family: var(--font-body); font-size: 0.88rem; color: #6BBAB5; line-height: 1.7; margin-bottom: 1.5rem; }
-.service-link-row { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; color: #3D8A85; text-transform: uppercase; transition: color 0.3s ease; }
+.service-link-row { display: flex; align-items: center; gap: 0.5rem; margin-top: auto; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; color: #3D8A85; text-transform: uppercase; transition: color 0.3s ease; }
 .service-link-row.hovered { color: #0DFFC4; }
 
 .service-card { transition: transform 0.6s var(--ease-smooth); }
