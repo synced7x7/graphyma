@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import './styles/About.css'
 
 /* ── Page transition ───────────────────────────── */
 const page = {
@@ -16,7 +17,7 @@ const PILLARS = [
     body: 'Deep expertise in processing and interpreting multispectral, SAR, and hyperspectral imagery from Sentinel, Landsat, and commercial platforms for real-world decision support.',
     link: '/services/remote-sensing',
     icon: (
-      <svg viewBox="0 0 40 40" fill="none" style={{ width: 28, height: 28 }}>
+      <svg viewBox="0 0 40 40" fill="none">
         <circle cx="20" cy="20" r="9" stroke="currentColor" strokeWidth="1.5" />
         <circle cx="20" cy="20" r="3" fill="currentColor" />
         <path d="M20 3v4M20 33v4M3 20h4M33 20h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
@@ -30,7 +31,7 @@ const PILLARS = [
     body: 'Strategic guidance on digital transformation, EO platform adoption, and data infrastructure — bridging the gap between cutting-edge satellite capabilities and practical organisational use.',
     link: '/services/communications',
     icon: (
-      <svg viewBox="0 0 40 40" fill="none" style={{ width: 28, height: 28 }}>
+      <svg viewBox="0 0 40 40" fill="none">
         <rect x="4" y="8" width="32" height="22" rx="2" stroke="currentColor" strokeWidth="1.5"/>
         <line x1="4" y1="14" x2="36" y2="14" stroke="currentColor" strokeWidth="1" strokeOpacity="0.4"/>
         <circle cx="9" cy="11" r="1.5" fill="currentColor" fillOpacity="0.5"/>
@@ -48,7 +49,7 @@ const PILLARS = [
     body: 'Capacity-building programmes for institutions, businesses, and researchers — from foundational EO concepts to advanced remote sensing workflows and platform-specific skills.',
     link: '/services/trainings',
     icon: (
-      <svg viewBox="0 0 40 40" fill="none" style={{ width: 28, height: 28 }}>
+      <svg viewBox="0 0 40 40" fill="none">
         <path d="M20 5L38 14L20 23L2 14L20 5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
         <path d="M38 14V22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
         <path d="M9 19V30C9 30 13 36 20 36C27 36 31 30 31 30V19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
@@ -63,7 +64,7 @@ const PILLARS = [
     body: 'End-to-end coordination of EO and digital projects — from inception to delivery — across multi-stakeholder European and international contexts, with a focus on impact and efficiency.',
     link: '/services/project-management',
     icon: (
-      <svg viewBox="0 0 40 40" fill="none" style={{ width: 28, height: 28 }}>
+      <svg viewBox="0 0 40 40" fill="none">
         <rect x="3"  y="5" width="15" height="10" rx="2" stroke="currentColor" strokeWidth="1.5"/>
         <rect x="22" y="5" width="15" height="10" rx="2" stroke="currentColor" strokeWidth="1.5"/>
         <rect x="12" y="25" width="16" height="10" rx="2" stroke="currentColor" strokeWidth="1.5"/>
@@ -111,7 +112,7 @@ const STORY_PARAS = [
 /* ── Orbital SVG background element ───────────── */
 function OrbitalBg({ style }) {
   return (
-    <svg viewBox="0 0 600 600" fill="none" style={{ position: 'absolute', pointerEvents: 'none', ...style }}>
+    <svg viewBox="0 0 600 600" fill="none" className="about-orbit-bg" style={style}>
       <circle cx="300" cy="300" r="280" stroke="rgba(13,255,196,0.04)" strokeWidth="1"/>
       <circle cx="300" cy="300" r="200" stroke="rgba(13,255,196,0.06)" strokeWidth="1" strokeDasharray="4 8"/>
       <circle cx="300" cy="300" r="120" stroke="rgba(13,255,196,0.08)" strokeWidth="1"/>
@@ -129,11 +130,11 @@ export default function About() {
       {/* ══════════════════════════════════════
           HERO
       ══════════════════════════════════════ */}
-      <section style={{ position: 'relative', minHeight: '60vh', display: 'flex', alignItems: 'center', overflow: 'hidden', paddingTop: 120, paddingBottom: 100 }}>
+      <section className="about-hero">
         <OrbitalBg style={{ top: '-10%', right: '-15%', width: 600, height: 600, opacity: 0.7 }} />
         <div className="grid-bg" />
 
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+        <div className="container about-hero-container">
           <motion.span
             className="section-label"
             initial={{ opacity: 0, x: -20 }}
@@ -147,7 +148,7 @@ export default function About() {
             initial={{ opacity: 0, y: 38 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', fontWeight: 800, lineHeight: 0.95, letterSpacing: '-0.03em', maxWidth: 800, marginTop: '0.75rem' }}
+            className="about-hero-title"
           >
             Connecting{' '}
             <span className="gradient-text">Earth Observation</span>
@@ -158,7 +159,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            style={{ fontSize: '1.05rem', color: '#6BBAB5', lineHeight: 1.8, maxWidth: 560, marginTop: '1.75rem' }}
+            className="about-hero-copy"
           >
             GRAPHYMA is not only a startup with technical expertise, but a growing platform for connecting Earth Observation with the challenges and opportunities of the real world.
           </motion.p>
@@ -169,13 +170,9 @@ export default function About() {
           STORY SECTIONS
       ══════════════════════════════════════ */}
       {STORY_PARAS.map(({ label, heading, text }, i) => (
-        <section key={label} style={{
-          padding: '80px 0',
-          background: i % 2 === 1 ? 'rgba(13,255,196,0.015)' : 'transparent',
-          borderTop: '1px solid rgba(13,255,196,0.05)',
-        }}>
+        <section key={label} className={i % 2 === 1 ? 'about-story-section about-story-alt' : 'about-story-section'}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: i % 2 === 1 ? '1fr 2fr' : '2fr 1fr', gap: '4rem', alignItems: 'start' }} className="story-grid">
+            <div className={i % 2 === 1 ? 'about-story-grid about-story-grid-reverse' : 'about-story-grid'}>
               {i % 2 === 1 ? (
                 <>
                   <motion.div
@@ -185,15 +182,8 @@ export default function About() {
                     transition={{ duration: 0.75 }}
                   >
                     <span className="section-label">{label}</span>
-                    <div style={{
-                      marginTop: '1rem',
-                      width: 80, height: 80, borderRadius: 20,
-                      background: 'rgba(13,255,196,0.06)', border: '1px solid rgba(13,255,196,0.15)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    }}>
-                      <span style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 800, color: 'rgba(13,255,196,0.3)', lineHeight: 1 }}>
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
+                    <div className="about-story-number-card">
+                      <span className="about-story-number-text">{String(i + 1).padStart(2, '0')}</span>
                     </div>
                   </motion.div>
                   <motion.div
@@ -202,10 +192,10 @@ export default function About() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.75, delay: 0.1 }}
                   >
-                    <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', marginBottom: '1.25rem' }}>
+                    <h2 className="about-story-heading">
                       <span className="gradient-text">{heading}</span>
                     </h2>
-                    <p style={{ color: '#6BBAB5', lineHeight: 1.85, fontSize: '0.95rem' }}>{text}</p>
+                    <p className="about-story-text">{text}</p>
                   </motion.div>
                 </>
               ) : (
@@ -216,29 +206,22 @@ export default function About() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.75 }}
                   >
-                    <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', marginBottom: '1.25rem' }}>
+                    <h2 className="about-story-heading">
                       <span className="gradient-text">{heading}</span>
                     </h2>
-                    <p style={{ color: '#6BBAB5', lineHeight: 1.85, fontSize: '0.95rem' }}>{text}</p>
+                    <p className="about-story-text">{text}</p>
                   </motion.div>
                   <motion.div
                     initial={{ opacity: 0, x: 28 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.75, delay: 0.1 }}
-                    style={{ display: 'flex', justifyContent: 'flex-end' }}
+                    className="about-story-align-right"
                   >
                     <div>
                       <span className="section-label">{label}</span>
-                      <div style={{
-                        marginTop: '1rem',
-                        width: 80, height: 80, borderRadius: 20,
-                        background: 'rgba(13,255,196,0.06)', border: '1px solid rgba(13,255,196,0.15)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      }}>
-                        <span style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 800, color: 'rgba(13,255,196,0.3)', lineHeight: 1 }}>
-                          {String(i + 1).padStart(2, '0')}
-                        </span>
+                      <div className="about-story-number-card">
+                        <span className="about-story-number-text">{String(i + 1).padStart(2, '0')}</span>
                       </div>
                     </div>
                   </motion.div>
@@ -252,10 +235,10 @@ export default function About() {
       {/* ══════════════════════════════════════
           CAPABILITIES
       ══════════════════════════════════════ */}
-      <section id="pillars" className="section" style={{ position: 'relative', scrollMarginTop: 120 }}>
+      <section id="pillars" className="section about-pillars-section">
         <div className="glow-tl" />
         <div className="container">
-          <div style={{ marginBottom: '3.5rem' }}>
+          <div className="about-pillars-header">
             <motion.span className="section-label" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               Capabilities
             </motion.span>
@@ -264,18 +247,18 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.7 }}
-              style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', marginTop: '0.75rem' }}
+              className="about-pillars-title"
             >
               Four pillars of{' '}
               <span className="gradient-text">expertise</span>
             </motion.h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
+          <div className="about-pillars-grid">
             {PILLARS.map(({ num, title, body, icon, link }, i) => (
-              <Link key={num} to={link} style={{ textDecoration: 'none' }}>
+              <Link key={num} to={link} className="about-pillars-link">
                 <motion.div
-                  className="glass"
+                  className="glass about-pillar-card"
                   initial={{ opacity: 0, y: 36 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   variants={pillarHover}
@@ -284,42 +267,21 @@ export default function About() {
                   animate="rest"
                   viewport={{ once: true, margin: '-50px' }}
                   transition={{ delay: i * 0.1, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ padding: '2rem', position: 'relative', overflow: 'hidden', borderRadius: 'var(--radius)', cursor: 'pointer' }}
                 >
-                  <div style={{
-                    position: 'absolute', top: -8, right: 12,
-                    fontFamily: 'var(--font-display)', fontSize: '5rem',
-                    fontWeight: 800, color: 'rgba(13,255,196,0.04)',
-                    lineHeight: 1, userSelect: 'none',
-                  }}>{num}</div>
+                  <div className="about-pillar-number">{num}</div>
 
-                  <div style={{
-                    width: 54, height: 54, borderRadius: 13,
-                    background: 'rgba(13,255,196,0.07)', border: '1px solid rgba(13,255,196,0.14)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: '#0DFFC4', marginBottom: '1.4rem',
-                  }}>
+                  <div className="about-pillar-icon">
                     {icon}
                   </div>
 
-                  <h3 style={{
-                    fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 700,
-                    color: '#EBF7F5', marginBottom: '0.75rem', letterSpacing: '0.01em', lineHeight: 1.3,
-                  }}>
+                  <h3 className="about-pillar-title">
                     {title}
                   </h3>
-                  <p style={{ fontSize: '0.87rem', color: '#6BBAB5', lineHeight: 1.75 }}>{body}</p>
+                  <p className="about-pillar-body">{body}</p>
 
                   <motion.div
                     variants={scanLine}
-                    style={{
-                      position: 'absolute',
-                      left: 0,
-                      right: 0,
-                      height: 60,
-                      background: 'linear-gradient(transparent, rgba(13,255,196,0.08), transparent)',
-                      pointerEvents: 'none',
-                    }}
+                    className="about-pillar-scan"
                   />
                 </motion.div>
               </Link>
@@ -331,10 +293,10 @@ export default function About() {
       {/* ══════════════════════════════════════
           VALUES
       ══════════════════════════════════════ */}
-      <section style={{ padding: '80px 0', borderTop: '1px solid rgba(13,255,196,0.06)', position: 'relative', overflow: 'hidden' }}>
+      <section className="about-values-section">
         <OrbitalBg style={{ bottom: '-20%', left: '-10%', width: 500, height: 500, opacity: 0.5 }} />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'center' }} className="values-grid">
+        <div className="container about-values-container">
+          <div className="about-values-grid">
 
             {/* Left: quote / vision statement */}
             <motion.div
@@ -343,35 +305,17 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.85 }}
             >
-              <div style={{
-                padding: '2.5rem',
-                background: 'rgba(13,255,196,0.025)',
-                border: '1px solid rgba(13,255,196,0.1)',
-                borderRadius: 20,
-                position: 'relative',
-              }}>
-                <div style={{
-                  position: 'absolute', top: -1, left: '2rem',
-                  width: 60, height: 2,
-                  background: 'linear-gradient(90deg, #0DFFC4, transparent)',
-                }} />
-                <div style={{
-                  fontFamily: 'var(--font-mono)', fontSize: '0.6rem',
-                  letterSpacing: '0.2em', color: '#0DFFC4',
-                  marginBottom: '1.25rem', textTransform: 'uppercase',
-                }}>
+              <div className="about-mission-card">
+                <div className="about-mission-bar" />
+                <div className="about-mission-label">
                   Mission Statement
                 </div>
-                <blockquote style={{
-                  fontFamily: 'var(--font-display)', fontSize: 'clamp(1.3rem, 2.2vw, 1.7rem)',
-                  fontWeight: 600, color: '#EBF7F5', lineHeight: 1.35,
-                  letterSpacing: '-0.01em',
-                }}>
+                <blockquote className="about-mission-quote">
                   "Advanced technological knowledge should not remain confined to specialist circles, but should become{' '}
-                  <span style={{ color: '#0DFFC4' }}>accessible, useful, and actionable</span>{' '}
+                  <span className="about-mission-highlight">accessible, useful, and actionable</span>{' '}
                   for everyone."
                 </blockquote>
-                <div style={{ marginTop: '1.5rem', fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.15em', color: '#2E5F5C' }}>
+                <div className="about-mission-signature">
                   — GRAPHYMA VISION
                 </div>
               </div>
@@ -385,12 +329,12 @@ export default function About() {
               transition={{ duration: 0.85, delay: 0.15 }}
             >
               <span className="section-label">Core Values</span>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 2.8vw, 2.4rem)', marginBottom: '2rem', marginTop: '0.75rem' }}>
+              <h2 className="about-values-title">
                 What drives{' '}
                 <span className="gradient-text">GRAPHYMA</span>
               </h2>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <div className="about-values-list">
                 {VALUES.map(({ label, desc }, i) => (
                   <motion.div
                     key={label}
@@ -398,21 +342,16 @@ export default function About() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.12, duration: 0.6 }}
-                    style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}
+                    className="about-value-card"
                   >
-                    <div style={{
-                      flexShrink: 0, width: 34, height: 34, borderRadius: 9,
-                      background: 'rgba(13,255,196,0.07)', border: '1px solid rgba(13,255,196,0.18)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      marginTop: '0.1rem',
-                    }}>
+                    <div className="about-value-icon">
                       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                         <path d="M2 7L5.5 10.5L12 4" stroke="#0DFFC4" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
                     <div>
-                      <div style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 700, color: '#EBF7F5', marginBottom: '0.3rem' }}>{label}</div>
-                      <p style={{ fontSize: '0.87rem', color: '#6BBAB5', lineHeight: 1.7 }}>{desc}</p>
+                      <div className="about-value-label">{label}</div>
+                      <p className="about-value-desc">{desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -425,16 +364,16 @@ export default function About() {
       {/* ══════════════════════════════════════
           EXPERTISE BADGES
       ══════════════════════════════════════ */}
-      <section style={{ padding: '60px 0 80px', borderTop: '1px solid rgba(13,255,196,0.06)' }}>
+      <section className="about-badges-section">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            style={{ textAlign: 'center', marginBottom: '2.5rem' }}
+            className="about-badges-header"
           >
-            <span className="section-label" style={{ justifyContent: 'center' }}>Technology Stack</span>
-            <h2 style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', marginTop: '0.75rem' }}>
+            <span className="section-label about-badges-label">Technology Stack</span>
+            <h2 className="about-badges-title">
               Built on <span className="gradient-text">industry-leading</span> platforms
             </h2>
           </motion.div>
@@ -444,7 +383,7 @@ export default function About() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center', maxWidth: 700, margin: '0 auto' }}
+            className="about-badges-grid"
           >
             {[
               'Copernicus Services', 'Google Earth Engine', 'ESA SNAP', 'QGIS', 'Python / NumPy',
@@ -457,15 +396,7 @@ export default function About() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.04 }}
-                style={{
-                  padding: '0.45rem 1.1rem',
-                  background: 'rgba(13,255,196,0.04)',
-                  border: '1px solid rgba(13,255,196,0.12)',
-                  borderRadius: 50,
-                  fontFamily: 'var(--font-mono)', fontSize: '0.65rem',
-                  letterSpacing: '0.1em', color: '#6BBAB5',
-                  whiteSpace: 'nowrap',
-                }}
+                className="about-badge"
               >
                 {tech}
               </motion.span>
@@ -477,30 +408,24 @@ export default function About() {
       {/* ══════════════════════════════════════
           CTA
       ══════════════════════════════════════ */}
-      <section style={{ padding: '60px 0 100px' }}>
+      <section className="about-cta-section">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 26 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            style={{
-              display: 'grid', gridTemplateColumns: '1fr auto', gap: '3rem',
-              alignItems: 'center', flexWrap: 'wrap',
-              padding: '3rem', background: 'rgba(13,255,196,0.022)',
-              border: '1px solid rgba(13,255,196,0.09)', borderRadius: 20,
-            }}
-            className="about-cta-grid"
+            className="about-cta-card"
           >
             <div>
-              <h2 style={{ fontSize: 'clamp(1.6rem, 2.8vw, 2.4rem)', marginBottom: '0.75rem' }}>
+              <h2 className="about-cta-title">
                 Ready to work with us?
               </h2>
-              <p style={{ fontSize: '0.93rem', color: '#6BBAB5', lineHeight: 1.75, maxWidth: 480 }}>
+              <p className="about-cta-copy">
                 Whether you are an institution, company, or research body — GRAPHYMA can help you unlock the value of Earth Observation.
               </p>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', flexShrink: 0 }}>
+            <div className="about-cta-actions">
               <Link to="/contact" className="btn-primary">
                 Contact Us
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -512,14 +437,6 @@ export default function About() {
           </motion.div>
         </div>
       </section>
-
-      <style>{`
-        @media (max-width: 900px) {
-          .story-grid     { grid-template-columns: 1fr !important; }
-          .values-grid    { grid-template-columns: 1fr !important; }
-          .about-cta-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </motion.main>
   )
 }

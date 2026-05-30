@@ -5,6 +5,7 @@ import ParticleBackground from '../components/ParticleBackground'
 import EarthGlobe from '../components/EarthGlobe'
 import ServiceCard from '../components/ServiceCard'
 import AnimatedCounter from '../components/AnimatedCounter'
+import './styles/Home.css'
 
 /* ── Page variants ─────────────────────────────── */
 const page = {
@@ -71,7 +72,7 @@ const SERVICE_VISUALS = [
     title: 'Remote Sensing',
     accent: '#0DFFC4',
     svg: (
-      <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+      <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" className="home-service-visual-svg-inner">
         <circle cx="100" cy="70" r="50" stroke="rgba(13,255,196,0.15)" strokeWidth="1" />
         <circle cx="100" cy="70" r="35" stroke="rgba(13,255,196,0.25)" strokeWidth="1" strokeDasharray="3 5" />
         <circle cx="100" cy="70" r="20" fill="rgba(13,255,196,0.06)" stroke="rgba(13,255,196,0.5)" strokeWidth="1.5" />
@@ -95,7 +96,7 @@ const SERVICE_VISUALS = [
     title: 'Communications',
     accent: '#00C49A',
     svg: (
-      <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+      <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" className="home-service-visual-svg-inner">
         {/* Network nodes */}
         {[[100,70],[40,35],[160,35],[40,105],[160,105],[100,18]].map(([x,y],i) => (
           <circle key={i} cx={x} cy={y} r={i===0?8:5} fill={i===0?"rgba(13,255,196,0.3)":"rgba(13,255,196,0.12)"} stroke="rgba(13,255,196,0.5)" strokeWidth="1"/>
@@ -115,7 +116,7 @@ const SERVICE_VISUALS = [
     title: 'Trainings',
     accent: '#0DFFC4',
     svg: (
-      <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+      <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" className="home-service-visual-svg-inner">
         {/* Book layers */}
         <rect x="50" y="80" width="100" height="6" rx="2" fill="rgba(13,255,196,0.07)" stroke="rgba(13,255,196,0.2)" strokeWidth="0.8"/>
         <rect x="50" y="70" width="100" height="6" rx="2" fill="rgba(13,255,196,0.1)" stroke="rgba(13,255,196,0.3)" strokeWidth="0.8"/>
@@ -138,7 +139,7 @@ const SERVICE_VISUALS = [
     title: 'Project Management',
     accent: '#00C49A',
     svg: (
-      <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+      <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" className="home-service-visual-svg-inner">
         {/* Gantt bars */}
         {[
           [45, 35, 80, 'rgba(13,255,196,0.6)'],
@@ -177,13 +178,13 @@ export default function Home() {
       {/* ══════════════════════════════════════
           HERO
       ══════════════════════════════════════ */}
-      <section ref={heroRef} style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', paddingTop: 80 }}>
+      <section ref={heroRef} className="home-hero">
         <ParticleBackground />
         <div className="grid-bg" />
         <div className="glow-tl" />
 
-        <div className="container" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', alignItems: 'center', gap: '4rem', minHeight: 'calc(100vh - 80px)', padding: '4rem 0' }} className="hero-grid">
+        <div className="container home-hero-container">
+          <div className="home-hero-grid">
 
             {/* ── Left text ── */}
             <motion.div style={{ y: textY, opacity: heroOpacity }}>
@@ -200,24 +201,20 @@ export default function Home() {
                 initial={{ opacity: 0, y: 42 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.45, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                style={{ fontSize: 'clamp(3.8rem, 7.5vw, 7rem)', fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 0.92, letterSpacing: '-0.03em', marginBottom: '1.5rem' }}
+                className="home-hero-title"
               >
-                <span style={{ display: 'block', color: '#EBF7F5' }}>GRAPH</span>
-                <span style={{
-                  display: 'block',
-                  background: 'linear-gradient(125deg, #0DFFC4 0%, #00C49A 55%, #007A60 100%)',
-                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-                }}>YMA</span>
+                <span className="home-hero-title-line">GRAPH</span>
+                <span className="home-hero-title-gradient">YMA</span>
               </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                style={{ fontSize: '1.1rem', color: '#6BBAB5', lineHeight: 1.75, maxWidth: 470, marginBottom: '2.5rem' }}
+                className="home-hero-copy"
               >
                 We help clients{' '}
-                <span style={{ color: '#EBF7F5', fontWeight: 500 }}>understand, adopt, and apply</span>{' '}
+                <span className="home-hero-copy-strong">understand, adopt, and apply</span>{' '}
                 Earth Observation solutions in practice.
               </motion.p>
 
@@ -225,7 +222,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.75, duration: 0.8 }}
-                style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
+                className="home-hero-actions"
               >
                 <Link to="/about" className="btn-primary">
                   Discover GRAPHYMA
@@ -241,14 +238,14 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.8 }}
-                style={{ position: 'absolute', bottom: '2.5rem', left: 0, display: 'flex', alignItems: 'center', gap: '0.85rem' }}
+                className="home-scroll-cue"
               >
                 <motion.div
                   animate={{ scaleY: [1, 0.6, 1] }}
                   transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-                  style={{ width: 1, height: 52, background: 'linear-gradient(to bottom, rgba(13,255,196,0.7), transparent)', transformOrigin: 'top' }}
+                  className="home-scroll-line"
                 />
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', letterSpacing: '0.22em', color: '#2E5F5C', textTransform: 'uppercase', writingMode: 'vertical-lr' }}>
+                <span className="home-scroll-label">
                   Scroll
                 </span>
               </motion.div>
@@ -256,12 +253,13 @@ export default function Home() {
 
             {/* ── Right globe ── */}
             <motion.div
-              style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', y: globeY, opacity: heroOpacity }}
+              style={{ y: globeY, opacity: heroOpacity }}
+              className="home-hero-right"
               initial={{ opacity: 0, scale: 0.82 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div style={{ position: 'relative', animation: 'float 9s ease-in-out infinite' }}>
+              <div className="home-globe-wrap">
                 <EarthGlobe />
                 {FLOAT_LABELS.map(({ label, delay, ...pos }) => (
                   <motion.div
@@ -269,19 +267,10 @@ export default function Home() {
                     initial={{ opacity: 0, x: pos.right ? 10 : -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    style={{
-                      position: 'absolute', ...pos,
-                      padding: '0.38rem 0.9rem',
-                      background: 'rgba(5,12,11,0.88)',
-                      border: '1px solid rgba(13,255,196,0.22)',
-                      borderRadius: 50,
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '0.62rem', letterSpacing: '0.12em', color: '#0DFFC4',
-                      whiteSpace: 'nowrap', backdropFilter: 'blur(14px)',
-                      boxShadow: '0 0 20px rgba(13,255,196,0.08)',
-                    }}
+                    className="home-float-label"
+                    style={pos}
                   >
-                    <span style={{ display: 'inline-block', width: 5, height: 5, borderRadius: '50%', background: '#0DFFC4', marginRight: '0.45rem', verticalAlign: 'middle', animation: 'pulse-dot 2s ease-in-out infinite' }} />
+                    <span className="home-float-dot" />
                     {label}
                   </motion.div>
                 ))}
@@ -294,9 +283,9 @@ export default function Home() {
       {/* ══════════════════════════════════════
           STATS BAR
       ══════════════════════════════════════ */}
-      <section style={{ padding: '2.5rem 0', borderTop: '1px solid rgba(13,255,196,0.06)', borderBottom: '1px solid rgba(13,255,196,0.06)', background: 'rgba(13,255,196,0.012)' }}>
+      <section className="home-stats">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '1.5rem' }} className="stats-grid">
+          <div className="home-stats-grid">
             {STATS.map(({ target, suffix, label, decimals }, i) => (
               <motion.div
                 key={label}
@@ -304,12 +293,12 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.09, duration: 0.6 }}
-                style={{ textAlign: 'center', padding: '1rem 0' }}
+                className="home-stat-card"
               >
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.1rem, 3.8vw, 3.2rem)', fontWeight: 800, color: '#0DFFC4', lineHeight: 1, marginBottom: '0.4rem' }}>
+                <div className="home-stat-number">
                   <AnimatedCounter target={target} suffix={suffix} decimals={decimals} />
                 </div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.15em', color: '#2E5F5C', textTransform: 'uppercase' }}>{label}</div>
+                <div className="home-stat-label">{label}</div>
               </motion.div>
             ))}
           </div>
@@ -319,20 +308,20 @@ export default function Home() {
       {/* ══════════════════════════════════════
           SERVICES
       ══════════════════════════════════════ */}
-      <section id="services" className="section" style={{ position: 'relative' }}>
+      <section id="services" className="section home-services-section">
         <div className="glow-br" />
         <div className="container">
           <motion.span className="section-label" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             Our Services
           </motion.span>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3.5rem', marginTop: '0.75rem', flexWrap: 'wrap', gap: '1.5rem' }}>
+          <div className="home-services-header">
             <motion.h2
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.7 }}
-              style={{ fontSize: 'clamp(2rem, 3.8vw, 3rem)' }}
+              className="home-services-title"
             >
               Specialised services<br />
               <span className="gradient-text">built for impact</span>
@@ -342,14 +331,14 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.7 }}
-              style={{ maxWidth: 380, fontSize: '0.9rem', color: '#6BBAB5', lineHeight: 1.75 }}
+              className="home-services-copy"
             >
               We provide specialised services that combine technical expertise, communication, training, and strategic support.
             </motion.p>
           </div>
 
           {/* Service image cards (static visuals) */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '1.25rem', marginBottom: '1.5rem' }} className="svc-img-grid">
+          <div className="home-service-visual-grid">
             {SERVICE_VISUALS.map(({ title, svg }, i) => (
               <motion.div
                 key={title}
@@ -357,26 +346,16 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ delay: i * 0.08, duration: 0.7 }}
-                style={{
-                  background: 'rgba(13,255,196,0.025)', border: '1px solid rgba(13,255,196,0.08)',
-                  borderRadius: 14, overflow: 'hidden', aspectRatio: '16/10',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  padding: '1rem',
-                  position: 'relative',
-                }}
+                className="home-service-visual-card"
               >
-                <div style={{ width: '100%', height: '100%', opacity: 0.9 }}>{svg}</div>
-                <div style={{
-                  position: 'absolute', bottom: 10, left: 12,
-                  fontFamily: 'var(--font-mono)', fontSize: '0.58rem', letterSpacing: '0.14em',
-                  color: 'rgba(13,255,196,0.45)', textTransform: 'uppercase',
-                }}>{String(i + 1).padStart(2, '0')}</div>
+                <div className="home-service-visual-svg">{svg}</div>
+                <div className="home-service-visual-number">{String(i + 1).padStart(2, '0')}</div>
               </motion.div>
             ))}
           </div>
 
           {/* Service detail cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
+          <div className="home-service-grid">
             {SERVICES.map(s => <ServiceCard key={s.number} {...s} />)}
           </div>
         </div>
@@ -385,9 +364,9 @@ export default function Home() {
       {/* ══════════════════════════════════════
           HERITAGE / NETWORK
       ══════════════════════════════════════ */}
-      <section className="section" style={{ position: 'relative', background: 'linear-gradient(180deg, transparent, rgba(13,255,196,0.018) 50%, transparent)' }}>
+      <section className="section home-heritage-section">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'center' }} className="heritage-grid">
+          <div className="home-heritage-grid">
 
             {/* SVG orbital diagram */}
             <motion.div
@@ -395,10 +374,10 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9 }}
-              style={{ position: 'relative' }}
+              className="home-heritage-orbit"
             >
-              <div style={{ width: '100%', maxWidth: 460, margin: '0 auto', aspectRatio: '1', position: 'relative' }}>
-                <svg viewBox="0 0 460 460" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+              <div className="home-heritage-orbit-wrap">
+                <svg viewBox="0 0 460 460" fill="none" xmlns="http://www.w3.org/2000/svg" className="home-orbit-svg">
                   {/* Concentric orbit rings */}
                   <circle cx="230" cy="230" r="196" stroke="rgba(13,255,196,0.05)" strokeWidth="1" strokeDasharray="4 10" />
                   <circle cx="230" cy="230" r="148" stroke="rgba(13,255,196,0.09)" strokeWidth="1" strokeDasharray="3 7" />
@@ -433,12 +412,13 @@ export default function Home() {
                   { label: 'JRC',      top: '78%', left: '20%' },
                   { label: 'GRAPHYMA', top: '45%', left: '41%' },
                 ].map(({ label, top, left }) => (
-                  <div key={label} style={{
-                    position: 'absolute', top, left,
-                    fontFamily: 'var(--font-mono)', fontSize: label === 'GRAPHYMA' ? '0.55rem' : '0.6rem',
-                    letterSpacing: '0.14em', color: label === 'GRAPHYMA' ? '#0DFFC4' : '#6BBAB5',
-                    transform: 'translate(-50%, -50%)', whiteSpace: 'nowrap', pointerEvents: 'none',
-                  }}>{label}</div>
+                  <div
+                    key={label}
+                    className={label === 'GRAPHYMA' ? 'home-orbit-label home-orbit-label-core' : 'home-orbit-label'}
+                    style={{ top, left }}
+                  >
+                    {label}
+                  </div>
                 ))}
               </div>
             </motion.div>
@@ -451,29 +431,22 @@ export default function Home() {
               transition={{ duration: 0.9, delay: 0.2 }}
             >
               <span className="section-label">Our Heritage</span>
-              <h2 style={{ fontSize: 'clamp(1.9rem, 3vw, 2.7rem)', marginBottom: '1.5rem', lineHeight: 1.12, marginTop: '0.75rem' }}>
+              <h2 className="home-heritage-title">
                 A legacy shaped by<br />
                 <span className="gradient-text">Europe's most trusted</span><br />
                 EO entities
               </h2>
-              <p style={{ color: '#6BBAB5', lineHeight: 1.82, marginBottom: '1.25rem', fontSize: '0.93rem' }}>
+              <p className="home-heritage-copy">
                 We inherit a legacy of expertise, shaped by our team's years of collaboration with Europe's most trusted Earth Observation entities — from ESA and Copernicus to EUMETSAT and JRC.
               </p>
-              <p style={{ color: '#6BBAB5', lineHeight: 1.82, marginBottom: '2.25rem', fontSize: '0.93rem' }}>
+              <p className="home-heritage-copy">
                 This foundation gives us a unique vantage point: we understand both the technical depth of satellite systems and the practical needs of the organisations that depend on them.
               </p>
 
               {/* Tags */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginBottom: '2rem' }}>
+              <div className="home-heritage-tags">
                 {['Copernicus', 'Sentinel Data', 'GIS', 'ML/AI', 'EO Platforms', 'ESA Projects'].map(tag => (
-                  <span key={tag} style={{
-                    padding: '0.3rem 0.85rem',
-                    background: 'rgba(13,255,196,0.05)',
-                    border: '1px solid rgba(13,255,196,0.14)',
-                    borderRadius: 50,
-                    fontFamily: 'var(--font-mono)', fontSize: '0.62rem', letterSpacing: '0.1em',
-                    color: '#6BBAB5',
-                  }}>{tag}</span>
+                  <span key={tag} className="home-heritage-tag">{tag}</span>
                 ))}
               </div>
 
@@ -491,37 +464,26 @@ export default function Home() {
       {/* ══════════════════════════════════════
           CTA BANNER
       ══════════════════════════════════════ */}
-      <section style={{ padding: '80px 0' }}>
+      <section className="home-cta-section">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.85 }}
-            style={{
-              textAlign: 'center', padding: '5rem 3rem',
-              background: 'rgba(13,255,196,0.022)',
-              border: '1px solid rgba(13,255,196,0.09)',
-              borderRadius: 24, position: 'relative', overflow: 'hidden',
-            }}
+            className="home-cta-card"
           >
-            <div style={{
-              position: 'absolute', top: '50%', left: '50%',
-              transform: 'translate(-50%,-50%)',
-              width: 640, height: 640,
-              background: 'radial-gradient(circle, rgba(13,255,196,0.06) 0%, transparent 65%)',
-              pointerEvents: 'none',
-            }} />
-            <div className="grid-bg" style={{ opacity: 0.5 }} />
+            <div className="home-cta-glow" />
+            <div className="grid-bg home-cta-grid" />
 
-            <motion.span className="section-label" style={{ justifyContent: 'center' }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>Start Today</motion.span>
+            <motion.span className="section-label home-cta-label" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>Start Today</motion.span>
 
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.7 }}
-              style={{ fontSize: 'clamp(2rem, 4.2vw, 3.6rem)', marginBottom: '1.25rem', position: 'relative', marginTop: '0.5rem' }}
+              className="home-cta-text"
             >
               Ready to see Earth<br />
               <span className="gradient-text">from a new perspective?</span>
@@ -532,7 +494,7 @@ export default function Home() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.7 }}
-              style={{ fontSize: '1rem', color: '#6BBAB5', maxWidth: 480, margin: '0 auto 2.5rem', lineHeight: 1.75, position: 'relative' }}
+              className="home-cta-copy"
             >
               Let's explore what Earth Observation can do for your organisation. Our team is ready to help.
             </motion.p>
@@ -542,7 +504,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', position: 'relative' }}
+              className="home-cta-actions"
             >
               <Link to="/contact" className="btn-primary">
                 Contact Us
@@ -556,18 +518,6 @@ export default function Home() {
         </div>
       </section>
 
-      <style>{`
-        @media (max-width: 900px) {
-          .hero-grid     { grid-template-columns: 1fr !important; text-align: center; }
-          .heritage-grid { grid-template-columns: 1fr !important; }
-          .svc-img-grid  { grid-template-columns: repeat(2,1fr) !important; }
-          .stats-grid    { grid-template-columns: repeat(2,1fr) !important; }
-          .hero-grid > div:last-child { display: none; }
-        }
-        @media (max-width: 600px) {
-          .svc-img-grid { grid-template-columns: 1fr 1fr !important; }
-        }
-      `}</style>
     </motion.main>
   )
 }

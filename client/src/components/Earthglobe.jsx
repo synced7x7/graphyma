@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import './styles/Earthglobe.css'
 
 // European/Mediterranean data point coordinates
 const DATA_POINTS = [
@@ -271,12 +272,6 @@ export default function EarthGlobe() {
   }, [])
 
   return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        display: 'block',
-        filter: 'drop-shadow(0 0 60px rgba(13,255,196,0.22)) drop-shadow(0 0 120px rgba(13,255,196,0.08))',
-      }}
-    />
+    <canvas ref={canvasRef} className="earth-globe-canvas" />
   )
 }
