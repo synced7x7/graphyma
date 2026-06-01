@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { path: '/contact', label: 'Contact' },
 ]
 
-export default function Navbar() {
+export default function Navbar({ theme = 'dark', onThemeToggle }) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
@@ -28,10 +28,10 @@ export default function Navbar() {
         <Link to="/" className="logo-link">
           <motion.div whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 400 }} className="logo-inner">
             {/* Logo mark */}
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <circle cx="14" cy="14" r="13" stroke="#0DFFC4" strokeWidth="1.5" />
-              <circle cx="14" cy="14" r="5" fill="#0DFFC4" />
-              <ellipse cx="14" cy="14" rx="13" ry="5" stroke="#0DFFC4" strokeWidth="1" strokeOpacity="0.4" />
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style={{ color: 'var(--accent)' }}>
+              <circle cx="14" cy="14" r="13" stroke="currentColor" strokeWidth="1.5" />
+              <circle cx="14" cy="14" r="5" fill="currentColor" />
+              <ellipse cx="14" cy="14" rx="13" ry="5" stroke="currentColor" strokeWidth="1" strokeOpacity="0.4" />
             </svg>
             <span className="brand-text">GRAPH<span className="brand-accent">YMA</span></span>
           </motion.div>
@@ -66,6 +66,18 @@ export default function Navbar() {
             </div>
             <span className="status-label">ACTIVE</span>
           </div>
+
+          <button
+            type="button"
+            onClick={onThemeToggle}
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            className="theme-toggle"
+          >
+            <span className="theme-toggle-track">
+              <span className="theme-toggle-thumb" />
+            </span>
+            <span className="theme-toggle-label">{theme === 'dark' ? 'Dark' : 'Light'}</span>
+          </button>
         </nav>
 
         {/* Mobile Hamburger */}
@@ -127,3 +139,4 @@ export default function Navbar() {
     </>
   )
 }
+

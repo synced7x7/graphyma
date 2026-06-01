@@ -103,14 +103,14 @@ export default function Trainings() {
                       width="244"
                       height="148"
                       rx="18"
-                      fill="rgba(13,255,196,0.05)"
-                      stroke="rgba(13,255,196,0.2)"
+                      fill="rgba(var(--accent-rgb),0.05)"
+                      stroke="rgba(var(--accent-rgb),0.2)"
                       animate={{ opacity: [0.8, 1, 0.85] }}
                       transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
                     />
-                    <motion.rect x="58" y="62" width="160" height="10" rx="5" fill="rgba(13,255,196,0.2)" animate={{ width: [140, 170, 150] }} transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }} />
-                    <motion.rect x="58" y="82" width="120" height="10" rx="5" fill="rgba(13,255,196,0.12)" animate={{ width: [110, 140, 120] }} transition={{ duration: 3.1, repeat: Infinity, ease: 'easeInOut' }} />
-                    <motion.rect x="58" y="102" width="180" height="10" rx="5" fill="rgba(13,255,196,0.18)" animate={{ width: [160, 190, 170] }} transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }} />
+                    <motion.rect x="58" y="62" width="160" height="10" rx="5" fill="rgba(var(--accent-rgb),0.2)" animate={{ width: [140, 170, 150] }} transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }} />
+                    <motion.rect x="58" y="82" width="120" height="10" rx="5" fill="rgba(var(--accent-rgb),0.12)" animate={{ width: [110, 140, 120] }} transition={{ duration: 3.1, repeat: Infinity, ease: 'easeInOut' }} />
+                    <motion.rect x="58" y="102" width="180" height="10" rx="5" fill="rgba(var(--accent-rgb),0.18)" animate={{ width: [160, 190, 170] }} transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }} />
 
                     <motion.g
                       animate={{
@@ -122,10 +122,10 @@ export default function Trainings() {
                       }}
                       transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
                     >
-                      <rect x="0" y="0" width="86" height="50" rx="8" fill="rgba(13,255,196,0.08)" stroke="rgba(13,255,196,0.25)" />
-                      <motion.line x1="10" y1="16" x2="74" y2="16" stroke="rgba(13,255,196,0.3)" strokeWidth="2" animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }} />
-                      <motion.line x1="10" y1="28" x2="60" y2="28" stroke="rgba(13,255,196,0.2)" strokeWidth="2" animate={{ opacity: [0.3, 0.8, 0.3] }} transition={{ duration: 2.3, repeat: Infinity, ease: 'easeInOut' }} />
-                      <motion.line x1="10" y1="40" x2="52" y2="40" stroke="rgba(13,255,196,0.2)" strokeWidth="2" animate={{ opacity: [0.3, 0.7, 0.3] }} transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }} />
+                      <rect x="0" y="0" width="86" height="50" rx="8" fill="rgba(var(--accent-rgb),0.08)" stroke="rgba(var(--accent-rgb),0.25)" />
+                      <motion.line x1="10" y1="16" x2="74" y2="16" stroke="rgba(var(--accent-rgb),0.3)" strokeWidth="2" animate={{ opacity: [0.4, 1, 0.4] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }} />
+                      <motion.line x1="10" y1="28" x2="60" y2="28" stroke="rgba(var(--accent-rgb),0.2)" strokeWidth="2" animate={{ opacity: [0.3, 0.8, 0.3] }} transition={{ duration: 2.3, repeat: Infinity, ease: 'easeInOut' }} />
+                      <motion.line x1="10" y1="40" x2="52" y2="40" stroke="rgba(var(--accent-rgb),0.2)" strokeWidth="2" animate={{ opacity: [0.3, 0.7, 0.3] }} transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }} />
                     </motion.g>
 
                     <motion.g
@@ -138,10 +138,10 @@ export default function Trainings() {
                       }}
                       transition={{ duration: 2.9, repeat: Infinity, ease: 'easeInOut' }}
                     >
-                      <rect x="0" y="0" width="64" height="54" rx="12" fill="rgba(13,255,196,0.1)" stroke="rgba(13,255,196,0.3)" />
-                      <motion.circle cx="32" cy="20" r="10" fill="rgba(13,255,196,0.2)" stroke="rgba(13,255,196,0.5)" animate={{ r: [9, 11, 9], opacity: [0.6, 1, 0.6] }} transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }} />
-                      <motion.path d="M26 20L30 24L38 16" stroke="#0DFFC4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }} />
-                      <motion.rect x="14" y="36" width="36" height="6" rx="3" fill="rgba(13,255,196,0.25)" animate={{ width: [28, 40, 32] }} transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }} />
+                      <rect x="0" y="0" width="64" height="54" rx="12" fill="rgba(var(--accent-rgb),0.1)" stroke="rgba(var(--accent-rgb),0.3)" />
+                      <motion.circle cx="32" cy="20" r="10" fill="rgba(var(--accent-rgb),0.2)" stroke="rgba(var(--accent-rgb),0.5)" animate={{ r: [9, 11, 9], opacity: [0.6, 1, 0.6] }} transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }} />
+                      <motion.path d="M26 20L30 24L38 16" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }} />
+                      <motion.rect x="14" y="36" width="36" height="6" rx="3" fill="rgba(var(--accent-rgb),0.25)" animate={{ width: [28, 40, 32] }} transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }} />
                     </motion.g>
 
                     <motion.g
@@ -154,12 +154,12 @@ export default function Trainings() {
                       }}
                       transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
                     >
-                      <rect x="0" y="0" width="46" height="34" rx="8" fill="rgba(13,255,196,0.08)" stroke="rgba(13,255,196,0.2)" />
-                      <motion.path d="M10 24C16 18 20 22 26 16" stroke="rgba(13,255,196,0.4)" strokeWidth="2" fill="none" animate={{ pathLength: [0, 1, 0] }} transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }} />
-                      <motion.circle cx="30" cy="12" r="3" fill="#0DFFC4" animate={{ scale: [1, 1.5, 1], opacity: [0.6, 1, 0.6] }} transition={{ duration: 1.9, repeat: Infinity, ease: 'easeInOut' }} />
+                      <rect x="0" y="0" width="46" height="34" rx="8" fill="rgba(var(--accent-rgb),0.08)" stroke="rgba(var(--accent-rgb),0.2)" />
+                      <motion.path d="M10 24C16 18 20 22 26 16" stroke="rgba(var(--accent-rgb),0.4)" strokeWidth="2" fill="none" animate={{ pathLength: [0, 1, 0] }} transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }} />
+                      <motion.circle cx="30" cy="12" r="3" fill="var(--accent)" animate={{ scale: [1, 1.5, 1], opacity: [0.6, 1, 0.6] }} transition={{ duration: 1.9, repeat: Infinity, ease: 'easeInOut' }} />
                     </motion.g>
 
-                    <motion.rect x="90" y="200" width="140" height="24" rx="12" fill="rgba(13,255,196,0.05)" stroke="rgba(13,255,196,0.2)" animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }} />
+                    <motion.rect x="90" y="200" width="140" height="24" rx="12" fill="rgba(var(--accent-rgb),0.05)" stroke="rgba(var(--accent-rgb),0.2)" animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }} />
                   </svg>
                 </motion.div>
 
@@ -258,3 +258,4 @@ export default function Trainings() {
     </motion.main>
   )
 }
+

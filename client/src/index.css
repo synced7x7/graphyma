@@ -5,23 +5,38 @@
 ═══════════════════════════════════════════ */
 
 :root {
-  --bg: #050C0B;
+  color-scheme: dark;
+
+  --bg: #050c0b;
+  --bg-rgb: 5, 12, 11;
   --bg-alt: #071412;
+  --bg-alt-rgb: 7, 20, 18;
   --bg-card: rgba(13, 255, 196, 0.025);
   --bg-card-hover: rgba(13, 255, 196, 0.05);
+  --surface: #0b1815;
+  --surface-rgb: 11, 24, 21;
+  --surface-2: #10211d;
+  --surface-2-rgb: 16, 33, 29;
 
-  --accent: #0DFFC4;
-  --accent-2: #00C49A;
-  --accent-3: #007A60;
+  --accent: #0dffc4;
+  --accent-rgb: 13, 255, 196;
+  --accent-2: #00c49a;
+  --accent-2-rgb: 0, 196, 154;
+  --accent-3: #007a60;
   --accent-dim: rgba(13, 255, 196, 0.1);
   --accent-glow: rgba(13, 255, 196, 0.35);
 
-  --text: #EBF7F5;
-  --text-2: #6BBAB5;
-  --text-3: #2E5F5C;
+  --text: #ebf7f5;
+  --text-rgb: 235, 247, 245;
+  --text-2: #6bbab5;
+  --text-2-rgb: 107, 186, 181;
+  --text-3: #2e5f5c;
+  --text-3-rgb: 46, 95, 92;
 
   --border: rgba(13, 255, 196, 0.08);
   --border-bright: rgba(13, 255, 196, 0.28);
+  --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.24);
+  --shadow-strong: 0 28px 80px rgba(0, 0, 0, 0.36);
 
   --radius-sm: 8px;
   --radius: 14px;
@@ -34,6 +49,41 @@
   --font-display: 'Syne', sans-serif;
   --font-body: 'DM Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #f5f8ff;
+  --bg-rgb: 245, 248, 255;
+  --bg-alt: #e8eefc;
+  --bg-alt-rgb: 232, 238, 252;
+  --bg-card: rgba(255, 255, 255, 0.72);
+  --bg-card-hover: rgba(255, 255, 255, 0.9);
+  --surface: #ffffff;
+  --surface-rgb: 255, 255, 255;
+  --surface-2: #edf2ff;
+  --surface-2-rgb: 237, 242, 255;
+
+  --accent: #2f6bff;
+  --accent-rgb: 47, 107, 255;
+  --accent-2: #5f86ff;
+  --accent-2-rgb: 95, 134, 255;
+  --accent-3: #1f4fd6;
+  --accent-dim: rgba(47, 107, 255, 0.12);
+  --accent-glow: rgba(47, 107, 255, 0.18);
+
+  --text: #162338;
+  --text-rgb: 22, 35, 56;
+  --text-2: #4f627f;
+  --text-2-rgb: 79, 98, 127;
+  --text-3: #7282a0;
+  --text-3-rgb: 114, 130, 160;
+
+  --border: rgba(47, 107, 255, 0.12);
+  --border-bright: rgba(47, 107, 255, 0.28);
+  --shadow-soft: 0 18px 50px rgba(20, 34, 74, 0.08);
+  --shadow-strong: 0 28px 80px rgba(20, 34, 74, 0.14);
 }
 
 /* ── Reset ───────────────────────────── */
@@ -131,7 +181,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 @keyframes glow-pulse {
   0%, 100% { box-shadow: 0 0 20px var(--accent-glow); }
-  50% { box-shadow: 0 0 50px var(--accent-glow), 0 0 100px rgba(13,255,196,0.15); }
+  50% { box-shadow: 0 0 50px var(--accent-glow), 0 0 100px rgba(var(--accent-rgb),0.15); }
 }
 
 /* ── Utilities ──────────────────────── */
@@ -187,6 +237,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   z-index: 9999;
   opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+:root[data-theme='light'] .noise-overlay {
+  opacity: 0.016;
 }
 
 /* ── Buttons ───────────────────────── */
@@ -252,6 +306,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border: 1px solid var(--border);
   border-radius: var(--radius);
   backdrop-filter: blur(24px);
+  box-shadow: var(--shadow-soft);
 }
 
 .glass:hover {
@@ -266,7 +321,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   left: -80px;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(13,255,196,0.07) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(var(--accent-rgb),0.07) 0%, transparent 65%);
   pointer-events: none;
 }
 
@@ -276,7 +331,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   right: -80px;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(0,100,80,0.08) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(var(--accent-2-rgb),0.08) 0%, transparent 65%);
   pointer-events: none;
 }
 
@@ -285,8 +340,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(13,255,196,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(13,255,196,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(var(--accent-rgb),0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--accent-rgb),0.04) 1px, transparent 1px);
   background-size: 60px 60px;
   animation: grid-fade 6s ease-in-out infinite;
   pointer-events: none;
@@ -309,3 +364,4 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 @media (max-width: 640px) {
   .container { padding: 0 1.25rem; }
 }
+

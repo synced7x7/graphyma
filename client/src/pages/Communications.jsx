@@ -135,8 +135,8 @@ export default function Communications() {
                         rx="50"
                         ry="12"
                         transform="rotate(-20 160 130)"
-                        fill="rgba(13,255,196,0.06)"
-                        stroke="rgba(13,255,196,0.22)"
+                        fill="rgba(var(--accent-rgb),0.06)"
+                        stroke="rgba(var(--accent-rgb),0.22)"
                         strokeWidth="1.2"
                       />
                       <ellipse
@@ -145,8 +145,8 @@ export default function Communications() {
                         rx="34"
                         ry="8"
                         transform="rotate(-20 160 130)"
-                        fill="rgba(13,255,196,0.02)"
-                        stroke="rgba(13,255,196,0.12)"
+                        fill="rgba(var(--accent-rgb),0.02)"
+                        stroke="rgba(var(--accent-rgb),0.12)"
                         strokeWidth="0.8"
                       />
                     </motion.g>
@@ -279,3 +279,4 @@ export default function Communications() {
     </motion.main>
   )
 }
+

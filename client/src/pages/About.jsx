@@ -83,7 +83,7 @@ const VALUES = [
 
 const pillarHover = {
   rest: { y: 0, boxShadow: 'none' },
-  hover: { y: -6, boxShadow: '0 0 30px rgba(13,255,196,0.12)' },
+  hover: { y: -6, boxShadow: '0 0 30px rgba(var(--accent-rgb),0.12)' },
 }
 
 const scanLine = {
@@ -113,11 +113,11 @@ const STORY_PARAS = [
 function OrbitalBg({ style }) {
   return (
     <svg viewBox="0 0 600 600" fill="none" className="about-orbit-bg" style={style}>
-      <circle cx="300" cy="300" r="280" stroke="rgba(13,255,196,0.04)" strokeWidth="1"/>
-      <circle cx="300" cy="300" r="200" stroke="rgba(13,255,196,0.06)" strokeWidth="1" strokeDasharray="4 8"/>
-      <circle cx="300" cy="300" r="120" stroke="rgba(13,255,196,0.08)" strokeWidth="1"/>
-      <circle cx="300" cy="300" r="50"  fill="rgba(13,255,196,0.03)" stroke="rgba(13,255,196,0.15)" strokeWidth="1"/>
-      <circle cx="300" cy="300" r="10"  fill="rgba(13,255,196,0.4)"/>
+      <circle cx="300" cy="300" r="280" stroke="rgba(var(--accent-rgb),0.04)" strokeWidth="1"/>
+      <circle cx="300" cy="300" r="200" stroke="rgba(var(--accent-rgb),0.06)" strokeWidth="1" strokeDasharray="4 8"/>
+      <circle cx="300" cy="300" r="120" stroke="rgba(var(--accent-rgb),0.08)" strokeWidth="1"/>
+      <circle cx="300" cy="300" r="50"  fill="rgba(var(--accent-rgb),0.03)" stroke="rgba(var(--accent-rgb),0.15)" strokeWidth="1"/>
+      <circle cx="300" cy="300" r="10"  fill="rgba(var(--accent-rgb),0.4)"/>
     </svg>
   )
 }
@@ -346,7 +346,7 @@ export default function About() {
                   >
                     <div className="about-value-icon">
                       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M2 7L5.5 10.5L12 4" stroke="#0DFFC4" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M2 7L5.5 10.5L12 4" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
                     <div>

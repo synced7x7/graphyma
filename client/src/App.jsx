@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import Navbar from './components/navbar'
@@ -84,11 +84,19 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
+  const [theme, setTheme] = useState('dark')
+
+  useEffect(() => {
+    const root = document.documentElement
+    root.dataset.theme = theme
+    root.style.colorScheme = theme
+  }, [theme])
+
   return (
     <BrowserRouter>
       <div className="noise-overlay" />
       <ScrollManager />
-      <Navbar />
+      <Navbar theme={theme} onThemeToggle={() => setTheme(current => (current === 'dark' ? 'light' : 'dark'))} />
       <AnimatedRoutes />
       <Footer />
     </BrowserRouter>

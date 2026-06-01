@@ -17,10 +17,10 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link to="/" className="footer-brand">
-              <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
-                <circle cx="14" cy="14" r="13" stroke="#0DFFC4" strokeWidth="1.5" />
-                <circle cx="14" cy="14" r="5" fill="#0DFFC4" />
-                <ellipse cx="14" cy="14" rx="13" ry="5" stroke="#0DFFC4" strokeWidth="1" strokeOpacity="0.4" />
+              <svg width="26" height="26" viewBox="0 0 28 28" fill="none" style={{ color: 'var(--accent)' }}>
+                <circle cx="14" cy="14" r="13" stroke="currentColor" strokeWidth="1.5" />
+                <circle cx="14" cy="14" r="5" fill="currentColor" />
+                <ellipse cx="14" cy="14" rx="13" ry="5" stroke="currentColor" strokeWidth="1" strokeOpacity="0.4" />
               </svg>
               <span className="brand-text">GRAPH<span className="brand-accent">YMA</span></span>
             </Link>

@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import ParticleBackground from '../components/ParticleBackground'
-import EarthGlobe from '../components/EarthGlobe'
+import ParticleBackground from '../components/Particlebackground'
+import EarthGlobe from '../components/Earthglobe'
 import ServiceCard from '../components/ServiceCard'
 import AnimatedCounter from '../components/AnimatedCounter'
 import './styles/Home.css'
@@ -70,95 +70,95 @@ const ORBIT_NODES = [
 const SERVICE_VISUALS = [
   {
     title: 'Remote Sensing',
-    accent: '#0DFFC4',
+    accent: 'var(--accent)',
     svg: (
       <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" className="home-service-visual-svg-inner">
-        <circle cx="100" cy="70" r="50" stroke="rgba(13,255,196,0.15)" strokeWidth="1" />
-        <circle cx="100" cy="70" r="35" stroke="rgba(13,255,196,0.25)" strokeWidth="1" strokeDasharray="3 5" />
-        <circle cx="100" cy="70" r="20" fill="rgba(13,255,196,0.06)" stroke="rgba(13,255,196,0.5)" strokeWidth="1.5" />
-        <circle cx="100" cy="70" r="4"  fill="#0DFFC4" />
+        <circle cx="100" cy="70" r="50" stroke="rgba(var(--accent-rgb),0.15)" strokeWidth="1" />
+        <circle cx="100" cy="70" r="35" stroke="rgba(var(--accent-rgb),0.25)" strokeWidth="1" strokeDasharray="3 5" />
+        <circle cx="100" cy="70" r="20" fill="rgba(var(--accent-rgb),0.06)" stroke="rgba(var(--accent-rgb),0.5)" strokeWidth="1.5" />
+        <circle cx="100" cy="70" r="4"  fill="var(--accent)" />
         {/* Scan lines */}
         {[40,55,70,85,100].map(y => (
-          <line key={y} x1="50" y1={y} x2="150" y2={y} stroke="rgba(13,255,196,0.08)" strokeWidth="0.5" />
+          <line key={y} x1="50" y1={y} x2="150" y2={y} stroke="rgba(var(--accent-rgb),0.08)" strokeWidth="0.5" />
         ))}
         {/* Signal arcs */}
-        <path d="M70 40 Q100 20 130 40" stroke="rgba(13,255,196,0.4)" strokeWidth="1" fill="none"/>
-        <path d="M60 30 Q100 5 140 30"  stroke="rgba(13,255,196,0.2)" strokeWidth="1" fill="none"/>
+        <path d="M70 40 Q100 20 130 40" stroke="rgba(var(--accent-rgb),0.4)" strokeWidth="1" fill="none"/>
+        <path d="M60 30 Q100 5 140 30"  stroke="rgba(var(--accent-rgb),0.2)" strokeWidth="1" fill="none"/>
         {/* Satellite */}
-        <rect x="92" y="12" width="16" height="8" rx="1" fill="rgba(13,255,196,0.8)" />
-        <rect x="82" y="14" width="8" height="4" rx="0.5" fill="rgba(13,255,196,0.4)" />
-        <rect x="110" y="14" width="8" height="4" rx="0.5" fill="rgba(13,255,196,0.4)" />
-        <line x1="100" y1="20" x2="100" y2="34" stroke="rgba(13,255,196,0.4)" strokeWidth="0.8" strokeDasharray="2 2"/>
+        <rect x="92" y="12" width="16" height="8" rx="1" fill="rgba(var(--accent-rgb),0.8)" />
+        <rect x="82" y="14" width="8" height="4" rx="0.5" fill="rgba(var(--accent-rgb),0.4)" />
+        <rect x="110" y="14" width="8" height="4" rx="0.5" fill="rgba(var(--accent-rgb),0.4)" />
+        <line x1="100" y1="20" x2="100" y2="34" stroke="rgba(var(--accent-rgb),0.4)" strokeWidth="0.8" strokeDasharray="2 2"/>
       </svg>
     ),
   },
   {
     title: 'Communications',
-    accent: '#00C49A',
+    accent: 'var(--accent-2)',
     svg: (
       <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" className="home-service-visual-svg-inner">
         {/* Network nodes */}
         {[[100,70],[40,35],[160,35],[40,105],[160,105],[100,18]].map(([x,y],i) => (
-          <circle key={i} cx={x} cy={y} r={i===0?8:5} fill={i===0?"rgba(13,255,196,0.3)":"rgba(13,255,196,0.12)"} stroke="rgba(13,255,196,0.5)" strokeWidth="1"/>
+          <circle key={i} cx={x} cy={y} r={i===0?8:5} fill={i===0?"rgba(var(--accent-rgb),0.3)":"rgba(var(--accent-rgb),0.12)"} stroke="rgba(var(--accent-rgb),0.5)" strokeWidth="1"/>
         ))}
         {/* Lines */}
         {[[100,70,40,35],[100,70,160,35],[100,70,40,105],[100,70,160,105],[100,70,100,18],[40,35,160,35]].map(([x1,y1,x2,y2],i) => (
-          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(13,255,196,0.18)" strokeWidth="0.8" strokeDasharray="3 5"/>
+          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(var(--accent-rgb),0.18)" strokeWidth="0.8" strokeDasharray="3 5"/>
         ))}
         {/* Pulse rings on center */}
-        <circle cx="100" cy="70" r="14" stroke="rgba(13,255,196,0.25)" strokeWidth="1" />
-        <circle cx="100" cy="70" r="22" stroke="rgba(13,255,196,0.1)" strokeWidth="0.8" />
-        <circle cx="100" cy="70" r="3" fill="#0DFFC4" />
+        <circle cx="100" cy="70" r="14" stroke="rgba(var(--accent-rgb),0.25)" strokeWidth="1" />
+        <circle cx="100" cy="70" r="22" stroke="rgba(var(--accent-rgb),0.1)" strokeWidth="0.8" />
+        <circle cx="100" cy="70" r="3" fill="var(--accent)" />
       </svg>
     ),
   },
   {
     title: 'Trainings',
-    accent: '#0DFFC4',
+    accent: 'var(--accent)',
     svg: (
       <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" className="home-service-visual-svg-inner">
         {/* Book layers */}
-        <rect x="50" y="80" width="100" height="6" rx="2" fill="rgba(13,255,196,0.07)" stroke="rgba(13,255,196,0.2)" strokeWidth="0.8"/>
-        <rect x="50" y="70" width="100" height="6" rx="2" fill="rgba(13,255,196,0.1)" stroke="rgba(13,255,196,0.3)" strokeWidth="0.8"/>
-        <rect x="50" y="60" width="100" height="6" rx="2" fill="rgba(13,255,196,0.14)" stroke="rgba(13,255,196,0.4)" strokeWidth="0.8"/>
+        <rect x="50" y="80" width="100" height="6" rx="2" fill="rgba(var(--accent-rgb),0.07)" stroke="rgba(var(--accent-rgb),0.2)" strokeWidth="0.8"/>
+        <rect x="50" y="70" width="100" height="6" rx="2" fill="rgba(var(--accent-rgb),0.1)" stroke="rgba(var(--accent-rgb),0.3)" strokeWidth="0.8"/>
+        <rect x="50" y="60" width="100" height="6" rx="2" fill="rgba(var(--accent-rgb),0.14)" stroke="rgba(var(--accent-rgb),0.4)" strokeWidth="0.8"/>
         {/* Main screen/board */}
-        <rect x="55" y="28" width="90" height="28" rx="3" fill="rgba(13,255,196,0.06)" stroke="rgba(13,255,196,0.4)" strokeWidth="1"/>
-        <line x1="65" y1="36" x2="95" y2="36" stroke="rgba(13,255,196,0.4)" strokeWidth="1"/>
-        <line x1="65" y1="41" x2="125" y2="41" stroke="rgba(13,255,196,0.2)" strokeWidth="0.8"/>
-        <line x1="65" y1="46" x2="110" y2="46" stroke="rgba(13,255,196,0.2)" strokeWidth="0.8"/>
+        <rect x="55" y="28" width="90" height="28" rx="3" fill="rgba(var(--accent-rgb),0.06)" stroke="rgba(var(--accent-rgb),0.4)" strokeWidth="1"/>
+        <line x1="65" y1="36" x2="95" y2="36" stroke="rgba(var(--accent-rgb),0.4)" strokeWidth="1"/>
+        <line x1="65" y1="41" x2="125" y2="41" stroke="rgba(var(--accent-rgb),0.2)" strokeWidth="0.8"/>
+        <line x1="65" y1="46" x2="110" y2="46" stroke="rgba(var(--accent-rgb),0.2)" strokeWidth="0.8"/>
         {/* Check mark */}
-        <circle cx="138" cy="32" r="7" fill="rgba(13,255,196,0.15)" stroke="rgba(13,255,196,0.5)" strokeWidth="1"/>
-        <path d="M134 32L137 35L142 29" stroke="#0DFFC4" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="138" cy="32" r="7" fill="rgba(var(--accent-rgb),0.15)" stroke="rgba(var(--accent-rgb),0.5)" strokeWidth="1"/>
+        <path d="M134 32L137 35L142 29" stroke="var(--accent)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
         {/* Stand */}
-        <line x1="100" y1="56" x2="100" y2="62" stroke="rgba(13,255,196,0.3)" strokeWidth="1"/>
-        <line x1="80" y1="63" x2="120" y2="63" stroke="rgba(13,255,196,0.3)" strokeWidth="1"/>
+        <line x1="100" y1="56" x2="100" y2="62" stroke="rgba(var(--accent-rgb),0.3)" strokeWidth="1"/>
+        <line x1="80" y1="63" x2="120" y2="63" stroke="rgba(var(--accent-rgb),0.3)" strokeWidth="1"/>
       </svg>
     ),
   },
   {
     title: 'Project Management',
-    accent: '#00C49A',
+    accent: 'var(--accent-2)',
     svg: (
       <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" className="home-service-visual-svg-inner">
         {/* Gantt bars */}
         {[
-          [45, 35, 80, 'rgba(13,255,196,0.6)'],
-          [45, 50, 50, 'rgba(13,255,196,0.4)'],
-          [75, 65, 65, 'rgba(13,255,196,0.35)'],
-          [45, 80, 40, 'rgba(13,255,196,0.25)'],
-          [65, 95, 70, 'rgba(13,255,196,0.2)'],
+          [45, 35, 80, 'rgba(var(--accent-rgb),0.6)'],
+          [45, 50, 50, 'rgba(var(--accent-rgb),0.4)'],
+          [75, 65, 65, 'rgba(var(--accent-rgb),0.35)'],
+          [45, 80, 40, 'rgba(var(--accent-rgb),0.25)'],
+          [65, 95, 70, 'rgba(var(--accent-rgb),0.2)'],
         ].map(([x,y,w,color],i) => (
           <g key={i}>
             <rect x={x} y={y-4} width={w} height="8" rx="2" fill={color}/>
-            <circle cx={x+w} cy={y} r="3" fill="#0DFFC4" opacity="0.7"/>
+            <circle cx={x+w} cy={y} r="3" fill="var(--accent)" opacity="0.7"/>
           </g>
         ))}
         {/* Timeline axis */}
-        <line x1="40" y1="25" x2="40" y2="110" stroke="rgba(13,255,196,0.2)" strokeWidth="0.8"/>
-        <line x1="40" y1="110" x2="165" y2="110" stroke="rgba(13,255,196,0.2)" strokeWidth="0.8"/>
+        <line x1="40" y1="25" x2="40" y2="110" stroke="rgba(var(--accent-rgb),0.2)" strokeWidth="0.8"/>
+        <line x1="40" y1="110" x2="165" y2="110" stroke="rgba(var(--accent-rgb),0.2)" strokeWidth="0.8"/>
         {/* Today line */}
-        <line x1="110" y1="25" x2="110" y2="110" stroke="rgba(13,255,196,0.3)" strokeWidth="1" strokeDasharray="3 4"/>
-        <text x="112" y="22" fill="rgba(13,255,196,0.5)" fontSize="7" fontFamily="monospace">NOW</text>
+        <line x1="110" y1="25" x2="110" y2="110" stroke="rgba(var(--accent-rgb),0.3)" strokeWidth="1" strokeDasharray="3 4"/>
+        <text x="112" y="22" fill="rgba(var(--accent-rgb),0.5)" fontSize="7" fontFamily="monospace">NOW</text>
       </svg>
     ),
   },
@@ -173,7 +173,7 @@ export default function Home() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
 
   return (
-    <motion.main variants={page} initial="initial" animate="animate" exit="exit">
+    <motion.main variants={page} initial="initial" animate="animate" exit="exit" className="home-page">
 
       {/* ══════════════════════════════════════
           HERO
@@ -379,29 +379,29 @@ export default function Home() {
               <div className="home-heritage-orbit-wrap">
                 <svg viewBox="0 0 460 460" fill="none" xmlns="http://www.w3.org/2000/svg" className="home-orbit-svg">
                   {/* Concentric orbit rings */}
-                  <circle cx="230" cy="230" r="196" stroke="rgba(13,255,196,0.05)" strokeWidth="1" strokeDasharray="4 10" />
-                  <circle cx="230" cy="230" r="148" stroke="rgba(13,255,196,0.09)" strokeWidth="1" strokeDasharray="3 7" />
-                  <circle cx="230" cy="230" r="100" stroke="rgba(13,255,196,0.15)" strokeWidth="1" />
-                  <circle cx="230" cy="230" r="50"  stroke="rgba(13,255,196,0.32)" strokeWidth="1.5" />
+                  <circle cx="230" cy="230" r="196" stroke="rgba(var(--accent-rgb),0.05)" strokeWidth="1" strokeDasharray="4 10" />
+                  <circle cx="230" cy="230" r="148" stroke="rgba(var(--accent-rgb),0.09)" strokeWidth="1" strokeDasharray="3 7" />
+                  <circle cx="230" cy="230" r="100" stroke="rgba(var(--accent-rgb),0.15)" strokeWidth="1" />
+                  <circle cx="230" cy="230" r="50"  stroke="rgba(var(--accent-rgb),0.32)" strokeWidth="1.5" />
 
                   {/* Center GRAPHYMA core */}
-                  <circle cx="230" cy="230" r="26" fill="rgba(13,255,196,0.08)" stroke="rgba(13,255,196,0.55)" strokeWidth="1.5" />
-                  <circle cx="230" cy="230" r="9"  fill="#0DFFC4" />
-                  <circle cx="230" cy="230" r="18" stroke="rgba(13,255,196,0.25)" strokeWidth="0.8" />
+                  <circle cx="230" cy="230" r="26" fill="rgba(var(--accent-rgb),0.08)" stroke="rgba(var(--accent-rgb),0.55)" strokeWidth="1.5" />
+                  <circle cx="230" cy="230" r="9"  fill="var(--accent)" />
+                  <circle cx="230" cy="230" r="18" stroke="rgba(var(--accent-rgb),0.25)" strokeWidth="0.8" />
 
                   {/* Orbit nodes */}
                   {ORBIT_NODES.map(({ label, cx, cy }) => (
                     <g key={label}>
-                      <line x1="230" y1="230" x2={cx} y2={cy} stroke="rgba(13,255,196,0.1)" strokeWidth="0.8" strokeDasharray="4 7" />
-                      <circle cx={cx} cy={cy} r="18" fill="rgba(13,255,196,0.07)" stroke="rgba(13,255,196,0.35)" strokeWidth="1" />
-                      <circle cx={cx} cy={cy} r="6"  fill="rgba(13,255,196,0.75)" />
+                      <line x1="230" y1="230" x2={cx} y2={cy} stroke="rgba(var(--accent-rgb),0.1)" strokeWidth="0.8" strokeDasharray="4 7" />
+                      <circle cx={cx} cy={cy} r="18" fill="rgba(var(--accent-rgb),0.07)" stroke="rgba(var(--accent-rgb),0.35)" strokeWidth="1" />
+                      <circle cx={cx} cy={cy} r="6"  fill="rgba(var(--accent-rgb),0.75)" />
                     </g>
                   ))}
 
                   {/* Satellite dots on outer ring */}
-                  <circle cx="230" cy="34"  r="5" fill="#0DFFC4" opacity="0.6" />
-                  <circle cx="426" cy="230" r="4" fill="#0DFFC4" opacity="0.45" />
-                  <circle cx="134" cy="395" r="5" fill="#0DFFC4" opacity="0.55" />
+                  <circle cx="230" cy="34"  r="5" fill="var(--accent)" opacity="0.6" />
+                  <circle cx="426" cy="230" r="4" fill="var(--accent)" opacity="0.45" />
+                  <circle cx="134" cy="395" r="5" fill="var(--accent)" opacity="0.55" />
                 </svg>
 
                 {/* Node labels */}

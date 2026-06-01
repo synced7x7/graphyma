@@ -10,6 +10,23 @@ const DATA_POINTS = [
   { lat: 59.9, lon: 10.7, label: 'Oslo' },
 ]
 
+const THEME_PALETTES = {
+  dark: {
+    accentRgb: '13, 255, 196',
+    accent2Rgb: '0, 196, 154',
+    accent3Rgb: '0, 122, 96',
+    bgRgb: '5, 12, 11',
+    surfaceRgb: '11, 24, 21',
+  },
+  light: {
+    accentRgb: '47, 107, 255',
+    accent2Rgb: '95, 134, 255',
+    accent3Rgb: '31, 79, 214',
+    bgRgb: '245, 248, 255',
+    surfaceRgb: '255, 255, 255',
+  },
+}
+
 function latlonTo3D(lat, lon, R) {
   const phi = (lat * Math.PI) / 180
   const lambda = (lon * Math.PI) / 180
@@ -20,6 +37,11 @@ function latlonTo3D(lat, lon, R) {
   }
 }
 
+function readThemePalette() {
+  const theme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
+  return THEME_PALETTES[theme]
+}
+
 export default function EarthGlobe() {
   const canvasRef = useRef(null)
   const rafRef = useRef(null)
@@ -27,6 +49,7 @@ export default function EarthGlobe() {
   useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
+    const paletteRef = { current: readThemePalette() }
     const DPR = window.devicePixelRatio || 1
     const SIZE = 520
     canvas.width = SIZE * DPR
@@ -34,6 +57,16 @@ export default function EarthGlobe() {
     canvas.style.width = SIZE + 'px'
     canvas.style.height = SIZE + 'px'
     ctx.scale(DPR, DPR)
+
+    const syncPalette = () => {
+      paletteRef.current = readThemePalette()
+    }
+
+    const themeObserver = new MutationObserver(syncPalette)
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    })
 
     const cx = SIZE / 2
     const cy = SIZE / 2
@@ -43,12 +76,13 @@ export default function EarthGlobe() {
 
     function drawFrame() {
       ctx.clearRect(0, 0, SIZE, SIZE)
+      const palette = paletteRef.current
 
       // ── Outer atmospheric halo ────────────────────────────
       const halo = ctx.createRadialGradient(cx, cy, R * 0.88, cx, cy, R * 1.28)
-      halo.addColorStop(0, 'rgba(13,255,196,0)')
-      halo.addColorStop(0.5, 'rgba(13,255,196,0.06)')
-      halo.addColorStop(1, 'rgba(13,255,196,0)')
+      halo.addColorStop(0, `rgba(${palette.accentRgb},0)`)
+      halo.addColorStop(0.5, `rgba(${palette.accentRgb},0.06)`)
+      halo.addColorStop(1, `rgba(${palette.accentRgb},0)`)
       ctx.fillStyle = halo
       ctx.beginPath()
       ctx.arc(cx, cy, R * 1.28, 0, Math.PI * 2)
@@ -57,7 +91,7 @@ export default function EarthGlobe() {
       // ── Pulsing outer glow ────────────────────────────────
       const pulseAlpha = 0.04 + 0.02 * Math.sin(t * 0.02)
       const outerGlow = ctx.createRadialGradient(cx, cy, R, cx, cy, R * 1.8)
-      outerGlow.addColorStop(0, `rgba(13,255,196,${pulseAlpha})`)
+      outerGlow.addColorStop(0, `rgba(${palette.accentRgb},${pulseAlpha})`)
       outerGlow.addColorStop(1, 'transparent')
       ctx.fillStyle = outerGlow
       ctx.fillRect(cx - R * 1.8, cy - R * 1.8, R * 3.6, R * 3.6)
@@ -70,10 +104,10 @@ export default function EarthGlobe() {
 
       // Base sphere gradient
       const baseGrad = ctx.createRadialGradient(cx - R * 0.28, cy - R * 0.28, R * 0.05, cx + R * 0.1, cy + R * 0.15, R * 1.2)
-      baseGrad.addColorStop(0, '#1B5244')
-      baseGrad.addColorStop(0.3, '#0D2F26')
-      baseGrad.addColorStop(0.65, '#061B15')
-      baseGrad.addColorStop(1, '#020C09')
+      baseGrad.addColorStop(0, `rgba(${palette.accentRgb},0.26)`)
+      baseGrad.addColorStop(0.22, `rgba(${palette.surfaceRgb},0.9)`)
+      baseGrad.addColorStop(0.65, `rgba(${palette.bgRgb},0.98)`)
+      baseGrad.addColorStop(1, `rgba(${palette.bgRgb},1)`)
       ctx.fillStyle = baseGrad
       ctx.fillRect(cx - R, cy - R, R * 2, R * 2)
 
@@ -86,7 +120,7 @@ export default function EarthGlobe() {
       ]
       oceanPatches.forEach(({ x, y, r }) => {
         const g = ctx.createRadialGradient(x, y, 0, x, y, r)
-        g.addColorStop(0, 'rgba(4,70,55,0.2)')
+        g.addColorStop(0, `rgba(${palette.accent3Rgb},0.2)`)
         g.addColorStop(1, 'rgba(0,0,0,0)')
         ctx.fillStyle = g
         ctx.fillRect(cx - R, cy - R, R * 2, R * 2)
@@ -102,8 +136,8 @@ export default function EarthGlobe() {
         ctx.beginPath()
         ctx.ellipse(cx, cy + ry, rx, rx * 0.1, 0, 0, Math.PI * 2)
         ctx.strokeStyle = isEquator
-          ? 'rgba(13,255,196,0.35)'
-          : 'rgba(13,255,196,0.12)'
+          ? `rgba(${palette.accentRgb},0.35)`
+          : `rgba(${palette.accentRgb},0.12)`
         ctx.lineWidth = isEquator ? 1 : 0.5
         ctx.stroke()
       }
@@ -119,15 +153,15 @@ export default function EarthGlobe() {
         const alpha = 0.06 + 0.16 * Math.abs(cosEff)
         ctx.beginPath()
         ctx.ellipse(cx, cy, xR, R, 0, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(13,255,196,${alpha})`
+        ctx.strokeStyle = `rgba(${palette.accentRgb},${alpha})`
         ctx.lineWidth = 0.5
         ctx.stroke()
       }
 
       // Light reflection (highlight)
       const light = ctx.createRadialGradient(cx - R * 0.45, cy - R * 0.45, 0, cx, cy, R * 1.1)
-      light.addColorStop(0, 'rgba(13,255,196,0.14)')
-      light.addColorStop(0.45, 'rgba(4,180,140,0.05)')
+      light.addColorStop(0, `rgba(${palette.accentRgb},0.14)`)
+      light.addColorStop(0.45, `rgba(${palette.accent2Rgb},0.06)`)
       light.addColorStop(1, 'rgba(0,0,0,0)')
       ctx.fillStyle = light
       ctx.fillRect(cx - R, cy - R, R * 2, R * 2)
@@ -142,9 +176,9 @@ export default function EarthGlobe() {
 
       // Atmospheric glow at limb
       const limb = ctx.createRadialGradient(cx, cy, R * 0.82, cx, cy, R)
-      limb.addColorStop(0, 'rgba(13,255,196,0)')
-      limb.addColorStop(0.7, 'rgba(13,255,196,0)')
-      limb.addColorStop(1, 'rgba(13,255,196,0.18)')
+      limb.addColorStop(0, `rgba(${palette.accentRgb},0)`)
+      limb.addColorStop(0.7, `rgba(${palette.accentRgb},0)`)
+      limb.addColorStop(1, `rgba(${palette.accentRgb},0.18)`)
       ctx.fillStyle = limb
       ctx.fillRect(cx - R, cy - R, R * 2, R * 2)
 
@@ -153,7 +187,7 @@ export default function EarthGlobe() {
       // ── Globe outline ─────────────────────────────────────
       ctx.beginPath()
       ctx.arc(cx, cy, R, 0, Math.PI * 2)
-      ctx.strokeStyle = 'rgba(13,255,196,0.55)'
+      ctx.strokeStyle = `rgba(${palette.accentRgb},0.55)`
       ctx.lineWidth = 1.2
       ctx.stroke()
 
@@ -169,7 +203,7 @@ export default function EarthGlobe() {
       ctx.beginPath()
       ctx.ellipse(0, 0, orx, ory, 0, 0, Math.PI * 2)
       ctx.setLineDash([5, 8])
-      ctx.strokeStyle = 'rgba(13,255,196,0.22)'
+      ctx.strokeStyle = `rgba(${palette.accentRgb},0.22)`
       ctx.lineWidth = 1
       ctx.stroke()
       ctx.setLineDash([])
@@ -185,22 +219,22 @@ export default function EarthGlobe() {
 
       // Solar panel glow
       const satGlow = ctx.createRadialGradient(0, 0, 0, 0, 0, 22)
-      satGlow.addColorStop(0, 'rgba(13,255,196,0.4)')
+      satGlow.addColorStop(0, `rgba(${palette.accentRgb},0.4)`)
       satGlow.addColorStop(1, 'transparent')
       ctx.fillStyle = satGlow
       ctx.fillRect(-22, -22, 44, 44)
 
       // Body
-      ctx.fillStyle = '#0DFFC4'
+      ctx.fillStyle = `rgb(${palette.accentRgb})`
       ctx.fillRect(-5, -3.5, 10, 7)
 
       // Panel arms
-      ctx.fillStyle = 'rgba(13,255,196,0.5)'
+      ctx.fillStyle = `rgba(${palette.accentRgb},0.5)`
       ctx.fillRect(-20, -2, 13, 4)
       ctx.fillRect(7, -2, 13, 4)
 
       // Antenna
-      ctx.strokeStyle = '#0DFFC4'
+      ctx.strokeStyle = `rgb(${palette.accentRgb})`
       ctx.lineWidth = 0.8
       ctx.beginPath()
       ctx.moveTo(0, -3.5)
@@ -224,14 +258,14 @@ export default function EarthGlobe() {
         // Ripple ring
         ctx.beginPath()
         ctx.arc(screenX, screenY, 3 + pulse * 9, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(13,255,196,${0.35 * visibility * (1 - pulse * 0.8)})`
+        ctx.strokeStyle = `rgba(${palette.accentRgb},${0.35 * visibility * (1 - pulse * 0.8)})`
         ctx.lineWidth = 1
         ctx.stroke()
 
         // Core dot
         ctx.beginPath()
         ctx.arc(screenX, screenY, 2.5, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(13,255,196,${0.9 * visibility})`
+        ctx.fillStyle = `rgba(${palette.accentRgb},${0.9 * visibility})`
         ctx.fill()
 
         // Inner bright dot
@@ -256,7 +290,7 @@ export default function EarthGlobe() {
           ctx.beginPath()
           ctx.moveTo(cx + ax, cy + ay)
           ctx.lineTo(cx + bx, cy + by)
-          ctx.strokeStyle = `rgba(13,255,196,${lineAlpha})`
+          ctx.strokeStyle = `rgba(${palette.accentRgb},${lineAlpha})`
           ctx.lineWidth = 0.8
           ctx.stroke()
         }
@@ -268,10 +302,14 @@ export default function EarthGlobe() {
     }
 
     drawFrame()
-    return () => cancelAnimationFrame(rafRef.current)
+    return () => {
+      themeObserver.disconnect()
+      cancelAnimationFrame(rafRef.current)
+    }
   }, [])
 
   return (
     <canvas ref={canvasRef} className="earth-globe-canvas" />
   )
 }
+

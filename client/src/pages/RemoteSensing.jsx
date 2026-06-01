@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import satellite from '../assets/satellite.svg'
 import './styles/RemoteSensing.css'
 
 const page = {
@@ -16,6 +15,20 @@ const CAPABILITIES = [
   { title: 'Analytics & Models', detail: 'Indices, ML pipelines, and change detection.' },
   { title: 'Decision Layers', detail: 'Actionable maps and executive-ready outputs.' },
 ]
+
+function SatelliteGraphic() {
+  return (
+    <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" fill="none" className="rs-satellite-graphic">
+      <rect x="48" y="34" width="24" height="12" rx="3" fill="currentColor" opacity="0.9" />
+      <rect x="52" y="20" width="16" height="10" rx="2" fill="currentColor" opacity="0.55" />
+      <rect x="12" y="28" width="30" height="20" rx="2" fill="currentColor" opacity="0.25" stroke="currentColor" strokeOpacity="0.45" />
+      <rect x="78" y="28" width="30" height="20" rx="2" fill="currentColor" opacity="0.25" stroke="currentColor" strokeOpacity="0.45" />
+      <circle cx="60" cy="40" r="3" fill="currentColor" />
+      <line x1="42" y1="38" x2="48" y2="38" stroke="currentColor" strokeOpacity="0.6" strokeWidth="2" />
+      <line x1="72" y1="38" x2="78" y2="38" stroke="currentColor" strokeOpacity="0.6" strokeWidth="2" />
+    </svg>
+  )
+}
 
 export default function RemoteSensing() {
   const orbitRef = useRef(null)
@@ -146,13 +159,13 @@ export default function RemoteSensing() {
                       animate={orbitHovered ? 'hover' : 'rest'}
                       className="rs-flare rs-flare-strong"
                     />
-                    <motion.img
-                      src={satellite}
-                      alt=""
+                    <motion.div
                       variants={pulseStrong}
                       animate={orbitHovered ? 'hover' : 'rest'}
                       className={orbitHovered ? 'rs-satellite rs-satellite-strong is-hovered' : 'rs-satellite rs-satellite-strong'}
-                    />
+                    >
+                      <SatelliteGraphic />
+                    </motion.div>
                   </motion.div>
 
                   <motion.div
@@ -165,13 +178,13 @@ export default function RemoteSensing() {
                       animate={orbitHovered ? 'hover' : 'rest'}
                       className="rs-flare rs-flare-mid"
                     />
-                    <motion.img
-                      src={satellite}
-                      alt=""
+                    <motion.div
                       variants={pulseMid}
                       animate={orbitHovered ? 'hover' : 'rest'}
                       className={orbitHovered ? 'rs-satellite rs-satellite-mid is-hovered' : 'rs-satellite rs-satellite-mid'}
-                    />
+                    >
+                      <SatelliteGraphic />
+                    </motion.div>
                   </motion.div>
 
                   <motion.div
@@ -184,13 +197,13 @@ export default function RemoteSensing() {
                       animate={orbitHovered ? 'hover' : 'rest'}
                       className="rs-flare rs-flare-soft"
                     />
-                    <motion.img
-                      src={satellite}
-                      alt=""
+                    <motion.div
                       variants={pulseSoft}
                       animate={orbitHovered ? 'hover' : 'rest'}
                       className={orbitHovered ? 'rs-satellite rs-satellite-soft is-hovered' : 'rs-satellite rs-satellite-soft'}
-                    />
+                    >
+                      <SatelliteGraphic />
+                    </motion.div>
                   </motion.div>
 
                   <div className="rs-core-glow" />
@@ -287,3 +300,4 @@ export default function RemoteSensing() {
     </motion.main>
   )
 }
+

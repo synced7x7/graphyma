@@ -208,7 +208,7 @@ export default function Contact() {
                     >
                       <div className="contact-success-icon">
                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                          <path d="M6 14L11 19L22 9" stroke="#0DFFC4" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M6 14L11 19L22 9" stroke="var(--accent)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </div>
                       <h3 className="contact-success-title">Message Sent</h3>

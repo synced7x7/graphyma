@@ -101,10 +101,10 @@ export default function ProjectManagement() {
                       animate={{ y: [0, -4, 0] }}
                       transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                     >
-                      <circle cx="160" cy="86" r="18" fill="rgba(13,255,196,0.12)" stroke="rgba(13,255,196,0.5)" strokeWidth="1" />
-                      <circle cx="160" cy="86" r="6" fill="#0DFFC4" />
-                      <rect x="130" y="110" width="60" height="70" rx="14" fill="rgba(13,255,196,0.08)" stroke="rgba(13,255,196,0.3)" />
-                      <rect x="116" y="140" width="88" height="12" rx="6" fill="rgba(13,255,196,0.18)" />
+                      <circle cx="160" cy="86" r="18" fill="rgba(var(--accent-rgb),0.12)" stroke="rgba(var(--accent-rgb),0.5)" strokeWidth="1" />
+                      <circle cx="160" cy="86" r="6" fill="var(--accent)" />
+                      <rect x="130" y="110" width="60" height="70" rx="14" fill="rgba(var(--accent-rgb),0.08)" stroke="rgba(var(--accent-rgb),0.3)" />
+                      <rect x="116" y="140" width="88" height="12" rx="6" fill="rgba(var(--accent-rgb),0.18)" />
                     </motion.g>
 
                     {[
@@ -118,10 +118,10 @@ export default function ProjectManagement() {
                         animate={{ y: [0, -6, 0], x: [0, 4, 0] }}
                         transition={{ duration: 2.8 + i * 0.3, repeat: Infinity, ease: 'easeInOut', delay: card.delay }}
                       >
-                        <rect x={card.x} y={card.y} width={card.w} height={card.h} rx="12" fill="rgba(13,255,196,0.07)" stroke="rgba(13,255,196,0.25)" />
-                        <motion.rect x={card.x + 10} y={card.y + 14} width={card.w - 20} height="6" rx="3" fill="rgba(13,255,196,0.22)" animate={{ width: [card.w - 28, card.w - 16, card.w - 24] }} transition={{ duration: 2.4 + i * 0.2, repeat: Infinity, ease: 'easeInOut' }} />
-                        <motion.rect x={card.x + 10} y={card.y + 28} width={card.w - 34} height="6" rx="3" fill="rgba(13,255,196,0.14)" animate={{ opacity: [0.5, 0.9, 0.5] }} transition={{ duration: 2.6 + i * 0.2, repeat: Infinity, ease: 'easeInOut' }} />
-                        <motion.circle cx={card.x + card.w - 14} cy={card.y + card.h - 12} r="4" fill="#0DFFC4" animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.8 + i * 0.15, repeat: Infinity, ease: 'easeInOut' }} />
+                        <rect x={card.x} y={card.y} width={card.w} height={card.h} rx="12" fill="rgba(var(--accent-rgb),0.07)" stroke="rgba(var(--accent-rgb),0.25)" />
+                        <motion.rect x={card.x + 10} y={card.y + 14} width={card.w - 20} height="6" rx="3" fill="rgba(var(--accent-rgb),0.22)" animate={{ width: [card.w - 28, card.w - 16, card.w - 24] }} transition={{ duration: 2.4 + i * 0.2, repeat: Infinity, ease: 'easeInOut' }} />
+                        <motion.rect x={card.x + 10} y={card.y + 28} width={card.w - 34} height="6" rx="3" fill="rgba(var(--accent-rgb),0.14)" animate={{ opacity: [0.5, 0.9, 0.5] }} transition={{ duration: 2.6 + i * 0.2, repeat: Infinity, ease: 'easeInOut' }} />
+                        <motion.circle cx={card.x + card.w - 14} cy={card.y + card.h - 12} r="4" fill="var(--accent)" animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.8 + i * 0.15, repeat: Infinity, ease: 'easeInOut' }} />
                       </motion.g>
                     ))}
 
@@ -137,7 +137,7 @@ export default function ProjectManagement() {
                         y1={line.y1}
                         x2={line.x2}
                         y2={line.y2}
-                        stroke="rgba(13,255,196,0.2)"
+                        stroke="rgba(var(--accent-rgb),0.2)"
                         strokeWidth="1"
                         strokeDasharray="4 6"
                         animate={{ strokeDashoffset: [0, -26] }}
@@ -242,3 +242,4 @@ export default function ProjectManagement() {
     </motion.main>
   )
 }
+

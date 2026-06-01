@@ -1,4 +1,4 @@
 .earth-globe-canvas {
   display: block;
-  filter: drop-shadow(0 0 60px rgba(13,255,196,0.22)) drop-shadow(0 0 120px rgba(13,255,196,0.08));
+  filter: drop-shadow(0 0 60px rgba(var(--accent-rgb),0.22)) drop-shadow(0 0 120px rgba(var(--accent-rgb),0.08));
 }
