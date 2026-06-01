@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import ParticleBackground from '../components/Particlebackground'
@@ -164,6 +164,8 @@ const SERVICE_VISUALS = [
   },
 ]
 
+
+
 /* ── Component ─────────────────────────────────── */
 export default function Home() {
   const heroRef = useRef(null)
@@ -171,6 +173,19 @@ export default function Home() {
   const globeY      = useTransform(scrollYProgress, [0, 1], [0, 80])
   const textY       = useTransform(scrollYProgress, [0, 1], [0, -55])
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
+
+  const [hasScrolled, setHasScrolled] = useState(false)
+
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.on("change", (value) => {
+      if (value > 0.02) {
+        setHasScrolled(true)
+      }
+    })
+
+    return () => unsubscribe()
+  }, [scrollYProgress])
+
 
   return (
     <motion.main variants={page} initial="initial" animate="animate" exit="exit" className="home-page">
@@ -232,23 +247,32 @@ export default function Home() {
                 </Link>
                 <Link to="/contact" className="btn-outline">Get in Touch</Link>
               </motion.div>
+            </motion.div>
 
-              {/* Scroll cue */}
+            {/* Scroll cue */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.5, ease: 'easeInOut' }}
+              className="home-scroll-cue"
+            >
+              
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.8 }}
-                className="home-scroll-cue"
+                animate={{ opacity: hasScrolled ? 0 : 1 }}
+                transition={{ delay: 0.3, duration: 0.8, ease: 'easeInOut' }}
               >
+                <div className="home-scroll-line-wrap">
                 <motion.div
                   animate={{ scaleY: [1, 0.6, 1] }}
                   transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
                   className="home-scroll-line"
                 />
+                </div>
                 <span className="home-scroll-label">
                   Scroll
                 </span>
               </motion.div>
+              
             </motion.div>
 
             {/* ── Right globe ── */}

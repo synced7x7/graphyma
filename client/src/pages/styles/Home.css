@@ -74,26 +74,39 @@
 }
 
 .home-scroll-cue {
-  position: absolute;
+  position: fixed;
   bottom: 2.5rem;
-  left: 0;
+  left: 2rem;
   display: flex;
-  align-items: center;
-  gap: 0.85rem;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.home-scroll-line-wrap {
+  transform: translateY(4.5rem); 
 }
 
 .home-scroll-line {
-  width: 1px;
-  height: 52px;
-  background: linear-gradient(to bottom, rgba(var(--accent-rgb),0.7), transparent);
+  
+  width: 2px; /* 👈 thicker */
+  height: 80px; /* 👈 taller */
+  margin-top: 12px;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--accent-rgb), 0.9),
+    rgba(var(--accent-rgb), 0.4),
+    transparent
+  );
   transform-origin: top;
+  box-shadow: 0 0 8px rgba(var(--accent-rgb), 0.5); /* 👈 glow effect */
+   
 }
 
 .home-scroll-label {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.22em;
-  color: var(--text-3);
+  font-size: 0.9rem; /* 👈 slightly bigger */
+  letter-spacing: 0.28em;
+  color: var(--text-2); /* 👈 more visible than text-3 */
   text-transform: uppercase;
   writing-mode: vertical-lr;
 }
