@@ -3,8 +3,8 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import ParticleBackground from '../components/Particlebackground'
 import EarthGlobe from '../components/Earthglobe'
-import ServiceCard from '../components/ServiceCard'
-import AnimatedCounter from '../components/AnimatedCounter'
+import ServiceCard from '../components/servicecard'
+import AnimatedCounter from '../components/Animatedcounter'
 import './styles/Home.css'
 
 /* ── Page variants ─────────────────────────────── */
