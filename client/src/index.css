@@ -54,36 +54,46 @@
 :root[data-theme='light'] {
   color-scheme: light;
 
-  --bg: #f5f8ff;
-  --bg-rgb: 245, 248, 255;
-  --bg-alt: #e8eefc;
-  --bg-alt-rgb: 232, 238, 252;
-  --bg-card: rgba(255, 255, 255, 0.72);
-  --bg-card-hover: rgba(255, 255, 255, 0.9);
+  /* 🌤 Backgrounds (neutral, clean) */
+  --bg: #fbf7f2;
+--bg-rgb: 251, 247, 242;
+
+--bg-alt: #f4ede4;
+--bg-alt-rgb: 244, 237, 228;
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --bg-card-hover: rgba(255, 255, 255, 0.95);
+
   --surface: #ffffff;
   --surface-rgb: 255, 255, 255;
-  --surface-2: #edf2ff;
-  --surface-2-rgb: 237, 242, 255;
+  --surface-2: #f4f6f8;
+  --surface-2-rgb: 244, 246, 248;
 
-  --accent: #2f6bff;
-  --accent-rgb: 47, 107, 255;
-  --accent-2: #5f86ff;
-  --accent-2-rgb: 95, 134, 255;
-  --accent-3: #1f4fd6;
-  --accent-dim: rgba(47, 107, 255, 0.12);
-  --accent-glow: rgba(47, 107, 255, 0.18);
+  /* 🔵 Modern neutral-blue accent */
+--accent: #2563eb;
+--accent-rgb: 37, 99, 235;
 
-  --text: #162338;
-  --text-rgb: 22, 35, 56;
-  --text-2: #4f627f;
-  --text-2-rgb: 79, 98, 127;
-  --text-3: #7282a0;
-  --text-3-rgb: 114, 130, 160;
+--accent-2: #4f7cff;
+--accent-2-rgb: 79, 124, 255;
 
-  --border: rgba(47, 107, 255, 0.12);
-  --border-bright: rgba(47, 107, 255, 0.28);
-  --shadow-soft: 0 18px 50px rgba(20, 34, 74, 0.08);
-  --shadow-strong: 0 28px 80px rgba(20, 34, 74, 0.14);
+--accent-3: #1d4ed8;
+
+  --accent-dim: rgba(16, 185, 129, 0.12);
+  --accent-glow: rgba(16, 185, 129, 0.18);
+
+  /* 🖤 Text (proper contrast) */
+  --text: #0f172a;
+  --text-rgb: 15, 23, 42;
+  --text-2: #475569;
+  --text-2-rgb: 71, 85, 105;
+  --text-3: #94a3b8;
+  --text-3-rgb: 148, 163, 184;
+
+  /* 🧊 Borders & shadows */
+  --border: rgba(15, 23, 42, 0.08);
+  --border-bright: rgba(16, 185, 129, 0.25);
+
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.1);
 }
 
 /* ── Reset ───────────────────────────── */
@@ -223,12 +233,26 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
 }
 
-.gradient-text {
+:root[data-theme='dark'] .gradient-text {
   background: linear-gradient(135deg, #fff 0%, var(--accent) 60%, var(--accent-2) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+:root[data-theme='light'] .gradient-text {
+  background: linear-gradient(
+    135deg,
+    #334155 0%,       /* slate gray (soft, not harsh) */
+    #1e40af 50%,      /* deep blue */
+    #3b82f6 100%      /* bright blue */
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 
 .noise-overlay {
   position: fixed;
