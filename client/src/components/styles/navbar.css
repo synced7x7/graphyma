@@ -12,7 +12,7 @@
 }
 .site-header.scrolled {
   backdrop-filter: blur(24px) saturate(1.5);
-  background: rgba(var(--bg-rgb),0.82);
+  background: rgba(var(--bg-rgb),0.4);
   border-bottom: 1px solid rgba(var(--accent-rgb),0.06);
 }
 .logo-inner { display: flex; align-items: center; gap: 0.5rem; }
