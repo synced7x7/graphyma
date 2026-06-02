@@ -55,11 +55,11 @@
   color-scheme: light;
 
   /* 🌤 Backgrounds (neutral, clean) */
-  --bg: #fbf7f2;
---bg-rgb: 251, 247, 242;
+  --bg: #f8fafc;
+--bg-rgb: 248, 250, 252;
 
---bg-alt: #f4ede4;
---bg-alt-rgb: 244, 237, 228;
+--bg-alt: #f1f5f9;
+--bg-alt-rgb: 241, 245, 249;
   --bg-card: rgba(255, 255, 255, 0.8);
   --bg-card-hover: rgba(255, 255, 255, 0.95);
 
@@ -265,6 +265,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 :root[data-theme='light'] .noise-overlay {
   opacity: 0.016;
+}
+
+:root[data-theme='light'] .home-page {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f5f7fa 100%
+  );
 }
 
 /* ── Buttons ───────────────────────── */

@@ -88,13 +88,13 @@ export default function EarthGlobe() {
       ctx.arc(cx, cy, R * 1.28, 0, Math.PI * 2)
       ctx.fill()
 
-      // ── Pulsing outer glow ────────────────────────────────
-      const pulseAlpha = 0.04 + 0.02 * Math.sin(t * 0.02)
-      const outerGlow = ctx.createRadialGradient(cx, cy, R, cx, cy, R * 1.8)
-      outerGlow.addColorStop(0, `rgba(${palette.accentRgb},${pulseAlpha})`)
-      outerGlow.addColorStop(1, 'transparent')
-      ctx.fillStyle = outerGlow
-      ctx.fillRect(cx - R * 1.8, cy - R * 1.8, R * 3.6, R * 3.6)
+      // // ── Pulsing outer glow ────────────────────────────────
+      // const pulseAlpha = 0.04 + 0.02 * Math.sin(t * 0.02)
+      // const outerGlow = ctx.createRadialGradient(cx, cy, R, cx, cy, R * 1.8)
+      // outerGlow.addColorStop(0, `rgba(${palette.accentRgb},${pulseAlpha})`)
+      // outerGlow.addColorStop(1, 'transparent')
+      // ctx.fillStyle = outerGlow
+      // ctx.fillRect(cx - R * 1.8, cy - R * 1.8, R * 3.6, R * 3.6)
 
       // ── Globe clip ────────────────────────────────────────
       ctx.save()

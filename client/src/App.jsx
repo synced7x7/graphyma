@@ -11,6 +11,22 @@ import Communications from './pages/Communications'
 import Trainings from './pages/Trainings'
 import ProjectManagement from './pages/ProjectManagement'
 
+const THEME_COOKIE = 'graphyma-theme'
+
+function readThemeCookie() {
+  if (typeof document === 'undefined') return 'dark'
+
+  const match = document.cookie.match(new RegExp(`(?:^|; )${THEME_COOKIE}=([^;]*)`))
+  const value = match ? decodeURIComponent(match[1]) : ''
+  return value === 'light' ? 'light' : 'dark'
+}
+
+function writeThemeCookie(theme) {
+  if (typeof document === 'undefined') return
+
+  document.cookie = `${THEME_COOKIE}=${encodeURIComponent(theme)}; path=/; max-age=31536000; samesite=lax`
+}
+
 function ScrollManager() {
   const location = useLocation()
   const navType = useNavigationType()
@@ -84,12 +100,13 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState(() => readThemeCookie())
 
   useEffect(() => {
     const root = document.documentElement
     root.dataset.theme = theme
     root.style.colorScheme = theme
+    writeThemeCookie(theme)
   }, [theme])
 
   return (
