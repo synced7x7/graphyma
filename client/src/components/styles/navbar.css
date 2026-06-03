@@ -1,3 +1,6 @@
+
+
+
 .site-header {
   position: fixed;
   top: 0;
@@ -34,13 +37,17 @@
 .theme-toggle-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 14px rgba(var(--accent-rgb),0.35); }
 .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; padding: 4px; background: none; border: none; cursor: pointer; }
 .hamburger-bar { display: block; width: 22px; height: 1.5px; background: var(--accent); border-radius: 2px; transform-origin: center; }
-.mobile-menu { position: fixed; top: 70px; left: 0; right: 0; z-index: 850; background: rgba(var(--bg-rgb),0.96); backdrop-filter: blur(30px); border-bottom: 1px solid rgba(var(--accent-rgb),0.1); padding: 1.5rem 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.mobile-menu { position: fixed; top: 70px; left: 0; right: 0; z-index: 850; background: rgba(var(--bg-rgb),0); backdrop-filter: blur(30px); border-bottom: 1px solid rgba(var(--accent-rgb),0.1); padding: 1.5rem 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
 .mobile-link { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; letter-spacing: 0.05em; text-decoration: none; color: var(--text); }
 .mobile-link.active { color: var(--accent); }
 
 @media (max-width: 700px) {
   .desktop-nav { display: none !important; }
-  .mobile-menu-btn { display: flex !important; }
+  .mobile-menu-btn { 
+    display: flex !important;
+    padding: 0rem 4rem;
+  }
+  
 }
 
 /* keep pulse keyframes (fallback) */

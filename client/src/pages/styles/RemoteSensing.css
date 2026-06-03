@@ -26,7 +26,7 @@
 }
 
 .rs-hero-copy {
-  color: #6BBAB5;
+  color:var(--text-2);
   line-height: 1.9;
   max-width: 560px;
   margin-bottom: 2rem;
@@ -224,7 +224,7 @@
 }
 
 .rs-section-copy {
-  color: #6BBAB5;
+  color:var(--text-2);
   line-height: 1.85;
   margin-bottom: 2rem;
 }
@@ -244,12 +244,12 @@
 .rs-capability-title {
   font-family: var(--font-display);
   font-weight: 700;
-  color: #EBF7F5;
+  color: var(--text-1);
   margin-bottom: 0.4rem;
 }
 
 .rs-capability-detail {
-  color: #6BBAB5;
+  color:var(--text-2);
   font-size: 0.88rem;
   line-height: 1.6;
 }
@@ -303,7 +303,7 @@
 
 .rs-stage-label {
   min-width: 90px;
-  color: #6BBAB5;
+  color:var(--text-2);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.12em;
