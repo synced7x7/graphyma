@@ -102,6 +102,8 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
+  
 }
 
 body {
@@ -110,8 +112,10 @@ body {
   color: var(--text);
   line-height: 1.65;
   overflow-x: hidden;
+  overflow-y: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+   max-width: 100vw; 
 }
 
 /* ── Scrollbar ───────────────────────── */

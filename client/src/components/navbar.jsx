@@ -20,6 +20,17 @@ export default function Navbar({ theme = 'dark', onThemeToggle }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    if (window.innerWidth > 700) return
+    const main = document.querySelector('main')
+    if (!main) return
+    main.style.transition = 'transform 0.38s cubic-bezier(0.16, 1, 0.3, 1)'
+    main.style.transform = mobileOpen ? 'translateY(160px)' : 'translateY(0)'
+    return () => {
+      if (main) main.style.transform = ''
+    }
+  }, [mobileOpen])
+
 
   return (
     <>
@@ -80,6 +91,18 @@ export default function Navbar({ theme = 'dark', onThemeToggle }) {
           </button>
         </nav>
 
+        <button
+          type="button"
+          onClick={onThemeToggle}
+          aria-label="Toggle theme"
+          className="theme-toggle theme-toggle-mobile"
+        >
+          <span className="theme-toggle-track">
+            <span className="theme-toggle-thumb" />
+          </span>
+          <span className="theme-toggle-label">{theme === 'dark' ? 'Dark' : 'Light'}</span>
+        </button>
+
         {/* Mobile Hamburger */}
         <button
           onClick={() => setMobileOpen(o => !o)}
@@ -99,6 +122,10 @@ export default function Navbar({ theme = 'dark', onThemeToggle }) {
           ))}
         </button>
       </motion.header>
+
+
+
+
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -126,6 +153,9 @@ export default function Navbar({ theme = 'dark', onThemeToggle }) {
                 </Link>
               </motion.div>
             ))}
+
+
+
           </motion.div>
         )}
       </AnimatePresence>
