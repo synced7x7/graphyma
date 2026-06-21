@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import graphymaLogo from '../assets/graphyma_logo1.png'
 import './styles/footer.css'
 /* import { motion } from 'framer-motion' */
 
@@ -17,11 +18,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link to="/" className="footer-brand">
-              <svg width="26" height="26" viewBox="0 0 28 28" fill="none" style={{ color: 'var(--accent)' }}>
-                <circle cx="14" cy="14" r="13" stroke="currentColor" strokeWidth="1.5" />
-                <circle cx="14" cy="14" r="5" fill="currentColor" />
-                <ellipse cx="14" cy="14" rx="13" ry="5" stroke="currentColor" strokeWidth="1" strokeOpacity="0.4" />
-              </svg>
+              <img src={graphymaLogo} alt="GRAPHYMA" className="logo-mark" />
               <span className="brand-text">GRAPH<span className="brand-accent">YMA</span></span>
             </Link>
             <p className="footer-desc">

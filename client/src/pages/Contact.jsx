@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import './styles/Contact.css'
+import { Globe2, Building2, GraduationCap, Handshake, Sprout } from 'lucide-react'
 
 /* ── Page transition ───────────────────────────── */
 const page = {
@@ -290,14 +291,14 @@ export default function Contact() {
                 </div>
                 <div className="contact-aside-list">
                   {[
-                    { icon: '🌍', label: 'Governments & Institutions' },
-                    { icon: '🏢', label: 'Private Companies' },
-                    { icon: '🎓', label: 'Universities & Researchers' },
-                    { icon: '🤝', label: 'International Partners' },
-                    { icon: '🌱', label: 'Environmental Organisations' },
+                    { icon: <Globe2 />, label: 'Governments & Institutions' },
+                    { icon: <Building2 />, label: 'Private Companies' },
+                    { icon: <GraduationCap />, label: 'Universities & Researchers' },
+                    { icon: <Handshake />, label: 'International Partners' },
+                    { icon: <Sprout />, label: 'Environmental Organisations' },
                   ].map(({ icon, label }) => (
                     <div key={label} className="contact-aside-item">
-                      <span className="contact-aside-emoji">{icon}</span>
+                      <span className="contact-aside-icon">{icon}</span>
                       <span className="contact-aside-text">{label}</span>
                     </div>
                   ))}

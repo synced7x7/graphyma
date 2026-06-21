@@ -341,9 +341,17 @@
   gap: 0.75rem;
 }
 
-.contact-aside-emoji {
-  font-size: 1rem;
-  line-height: 1;
+.contact-aside-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.08);
+  border: 1px solid rgba(var(--accent-rgb), 0.18);
+  border-radius: 7px;
 }
 
 .contact-aside-text {
