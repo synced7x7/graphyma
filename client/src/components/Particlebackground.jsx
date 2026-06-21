@@ -3,11 +3,21 @@ import { useEffect, useRef } from 'react'
 const NUM_PARTICLES = 140
 
 const THEME_PALETTES = {
+  // Teal theme
+  // dark: {
+  //   accentRgb: '13, 255, 196',
+  //   accent2Rgb: '0, 196, 154',
+  //   bgRgb: '5, 12, 11',
+  //   textRgb: '235, 247, 245',
+  // },
+  
+  // Lavender theme
   dark: {
-    accentRgb: '13, 255, 196',
-    accent2Rgb: '0, 196, 154',
+    accentRgb: '210, 160, 245',
+    accent2Rgb: '225, 185, 250',
+    accent3Rgb: '181, 126, 220',
     bgRgb: '5, 12, 11',
-    textRgb: '235, 247, 245',
+    surfaceRgb: '11, 24, 21',
   },
   light: {
     accentRgb: '47, 107, 255',

@@ -10,11 +10,21 @@ const DATA_POINTS = [
   { lat: 59.9, lon: 10.7, label: 'Oslo' },
 ]
 
+
 const THEME_PALETTES = {
+  /* Teal
   dark: {
     accentRgb: '13, 255, 196',
     accent2Rgb: '0, 196, 154',
     accent3Rgb: '0, 122, 96',
+    bgRgb: '5, 12, 11',
+    surfaceRgb: '11, 24, 21',
+  }, */
+  /* Lavender */
+  dark: {
+    accentRgb: '210, 160, 245',
+    accent2Rgb: '225, 185, 250',
+    accent3Rgb: '181, 126, 220',
     bgRgb: '5, 12, 11',
     surfaceRgb: '11, 24, 21',
   },
