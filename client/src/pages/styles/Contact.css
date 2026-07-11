@@ -240,7 +240,7 @@
   background: rgba(var(--accent-rgb),0.02);
   border: 1px solid rgba(var(--accent-rgb),0.1);
   border-radius: 10px;
-  color: #EBF7F5;
+  color: var(--text);
   font-family: var(--font-body);
   font-size: 0.9rem;
   outline: none;
