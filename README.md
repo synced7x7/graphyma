@@ -6,6 +6,16 @@
 	<img alt="Framer Motion" src="https://img.shields.io/badge/Framer%20Motion-12.40.0-000000?style=for-the-badge&logo=framer&logoColor=FFFFFF" />
 </div>
 
+
+
+<br>
+
+<p align="center">
+  <a href="https://graphyma-v6f3.vercel.app/">
+    <img src="https://img.shields.io/badge/Live_Website-111827?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Website">
+  </a>
+</p>
+
 ---
 
 ##  Overview
