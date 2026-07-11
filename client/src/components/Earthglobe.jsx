@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import './styles/Earthglobe.css'
 
 // European/Mediterranean data point coordinates
@@ -37,6 +37,49 @@ const THEME_PALETTES = {
   },
 }
 
+// Satellite dictionary
+const SATELLITES = [
+  {
+    id: 'sentinel-2a',
+    name: 'Sentinel-2A',
+    owner: 'ESA / Copernicus',
+    mission: 'Multispectral Earth Observation',
+    launch: '23 June 2015',
+    applications: ['Land cover monitoring', 'Agriculture & vegetation', 'Forest monitoring', 'Disaster response'],
+    orbitTilt: Math.PI * 0.22,
+    orbitScaleX: 1.22,
+    orbitScaleY: 0.30,
+    speed: 0.005,
+    phaseOffset: 0,
+  },
+  {
+    id: 'mtg-i1',
+    name: 'MTG-I1',
+    owner: 'EUMETSAT',
+    mission: 'Next-gen Meteorological Imaging',
+    launch: '13 December 2022',
+    applications: ['Severe storm tracking', 'Weather forecasting', 'Lightning detection', 'Climate monitoring'],
+    orbitTilt: -Math.PI * 0.18,
+    orbitScaleX: 1.28,
+    orbitScaleY: 0.26,
+    speed: 0.003,
+    phaseOffset: Math.PI * 0.75,
+  },
+  {
+    id: 'metop-c',
+    name: 'Metop-C',
+    owner: 'EUMETSAT / ESA',
+    mission: 'Polar Meteorological Observation',
+    launch: '7 November 2018',
+    applications: ['Numerical weather prediction', 'Climate research', 'Ocean wind monitoring', 'Atmospheric sounding'],
+    orbitTilt: Math.PI * 0.48,
+    orbitScaleX: 1.15,
+    orbitScaleY: 0.36,
+    speed: 0.007,
+    phaseOffset: Math.PI * 1.4,
+  },
+]
+
 function latlonTo3D(lat, lon, R) {
   const phi = (lat * Math.PI) / 180
   const lambda = (lon * Math.PI) / 180
@@ -55,6 +98,12 @@ function readThemePalette() {
 export default function EarthGlobe() {
   const canvasRef = useRef(null)
   const rafRef = useRef(null)
+  const [selectedSat, setSelectedSat] = useState(null)
+  const [panelPos, setPanelPos] = useState({ x: 0, y: 0 })
+  const selectedSatRef = useRef(null)
+  const satPositionsRef = useRef([])
+  const PANEL_W = 252
+  const PANEL_H = 295
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -77,6 +126,80 @@ export default function EarthGlobe() {
       attributes: true,
       attributeFilter: ['data-theme'],
     })
+
+
+
+    const isTouchDevice = () => window.matchMedia('(hover: none)').matches
+
+    const computePanelPos = (hit) => {
+      let px = hit.screenX + 18
+      let py = hit.screenY - PANEL_H / 2
+      if (px + PANEL_W > SIZE - 8) px = hit.screenX - PANEL_W - 18
+      if (py < 8) py = 8
+      if (py + PANEL_H > SIZE - 8) py = SIZE - PANEL_H - 8
+      return { x: px, y: py }
+    }
+
+    const resolveCoords = (e) => {
+      const rect = canvas.getBoundingClientRect()
+      const scale = SIZE / rect.width
+      const src = e.touches ? e.touches[0] : e
+      return {
+        mx: (src.clientX - rect.left) * scale,
+        my: (src.clientY - rect.top) * scale,
+      }
+    }
+
+    const handleMouseMove = (e) => {
+      if (isTouchDevice()) return
+      const { mx, my } = resolveCoords(e)
+      const hit = satPositionsRef.current.find(({ screenX, screenY }) => {
+        const dx = mx - screenX, dy = my - screenY
+        return Math.sqrt(dx * dx + dy * dy) < 22
+      })
+      if (hit) {
+        const sat = SATELLITES.find(s => s.id === hit.id)
+        selectedSatRef.current = sat
+        setSelectedSat(sat)
+        setPanelPos(computePanelPos(hit))
+      }
+      // no hit → keep last panel visible
+    }
+
+    const handleMouseLeave = () => {
+      if (!isTouchDevice()) {
+        selectedSatRef.current = null
+        setSelectedSat(null)
+      }
+    }
+
+    const handleClick = (e) => {
+      if (!isTouchDevice()) return
+      const { mx, my } = resolveCoords(e)
+      const hit = satPositionsRef.current.find(({ screenX, screenY }) => {
+        const dx = mx - screenX, dy = my - screenY
+        return Math.sqrt(dx * dx + dy * dy) < 28 // larger touch target
+      })
+      if (hit) {
+        const sat = SATELLITES.find(s => s.id === hit.id)
+        if (selectedSatRef.current?.id === sat?.id) {
+          selectedSatRef.current = null
+          setSelectedSat(null)
+        } else {
+          selectedSatRef.current = sat
+          setSelectedSat(sat)
+          setPanelPos(computePanelPos(hit))
+        }
+      } else {
+        selectedSatRef.current = null
+        setSelectedSat(null)
+      }
+    }
+
+    canvas.addEventListener('mousemove', handleMouseMove)
+    canvas.addEventListener('mouseleave', handleMouseLeave)
+    canvas.addEventListener('click', handleClick)
+    canvas.addEventListener('touchstart', handleClick, { passive: true })
 
     const cx = SIZE / 2
     const cy = SIZE / 2
@@ -201,58 +324,75 @@ export default function EarthGlobe() {
       ctx.lineWidth = 1.2
       ctx.stroke()
 
-      // ── Orbit ring ────────────────────────────────────────
-      ctx.save()
-      ctx.translate(cx, cy)
-      ctx.rotate(Math.PI * 0.22)
+      // ── Satellites ────────────────────────────────────────
+      const newPositions = []
 
-      const orx = R * 1.62
-      const ory = R * 0.4
+      SATELLITES.forEach((sat) => {
+        const orx = R * sat.orbitScaleX
+        const ory = R * sat.orbitScaleY
+        const cosT = Math.cos(sat.orbitTilt)
+        const sinT = Math.sin(sat.orbitTilt)
+        const isSelected = selectedSatRef.current?.id === sat.id
 
-      // Dashed ring
-      ctx.beginPath()
-      ctx.ellipse(0, 0, orx, ory, 0, 0, Math.PI * 2)
-      ctx.setLineDash([5, 8])
-      ctx.strokeStyle = `rgba(${palette.accentRgb},0.22)`
-      ctx.lineWidth = 1
-      ctx.stroke()
-      ctx.setLineDash([])
+        // Orbit ring
+        ctx.save()
+        ctx.translate(cx, cy)
+        ctx.rotate(sat.orbitTilt)
+        ctx.beginPath()
+        ctx.ellipse(0, 0, orx, ory, 0, 0, Math.PI * 2)
+        ctx.setLineDash([5, 8])
+        ctx.strokeStyle = `rgba(${palette.accentRgb},${isSelected ? 0.35 : 0.18})`
+        ctx.lineWidth = isSelected ? 1.2 : 1
+        ctx.stroke()
+        ctx.setLineDash([])
 
-      // ── Satellite ─────────────────────────────────────────
-      const satAngle = t * 0.022
-      const satX = Math.cos(satAngle) * orx
-      const satY = Math.sin(satAngle) * ory
+        // Satellite position
+        const angle = t * sat.speed + sat.phaseOffset
+        const satX = Math.cos(angle) * orx
+        const satY = Math.sin(angle) * ory
 
-      ctx.save()
-      ctx.translate(satX, satY)
-      ctx.rotate(satAngle + Math.PI * 0.25)
+        // Screen coords for hit-testing (CSS px space)
+        const screenX = cx + satX * cosT - satY * sinT
+        const screenY = cy + satX * sinT + satY * cosT
+        newPositions.push({ id: sat.id, screenX, screenY })
 
-      // Solar panel glow
-      const satGlow = ctx.createRadialGradient(0, 0, 0, 0, 0, 22)
-      satGlow.addColorStop(0, `rgba(${palette.accentRgb},0.4)`)
-      satGlow.addColorStop(1, 'transparent')
-      ctx.fillStyle = satGlow
-      ctx.fillRect(-22, -22, 44, 44)
+        // Draw satellite body
+        ctx.save()
+        ctx.translate(satX, satY)
+        ctx.rotate(angle + Math.PI * 0.25)
 
-      // Body
-      ctx.fillStyle = `rgb(${palette.accentRgb})`
-      ctx.fillRect(-5, -3.5, 10, 7)
+        const satGlow = ctx.createRadialGradient(0, 0, 0, 0, 0, isSelected ? 30 : 22)
+        satGlow.addColorStop(0, `rgba(${palette.accentRgb},${isSelected ? 0.65 : 0.4})`)
+        satGlow.addColorStop(1, 'transparent')
+        ctx.fillStyle = satGlow
+        ctx.fillRect(-30, -30, 60, 60)
 
-      // Panel arms
-      ctx.fillStyle = `rgba(${palette.accentRgb},0.5)`
-      ctx.fillRect(-20, -2, 13, 4)
-      ctx.fillRect(7, -2, 13, 4)
+        ctx.fillStyle = isSelected ? `rgba(255,255,255,0.95)` : `rgb(${palette.accentRgb})`
+        ctx.fillRect(-5, -3.5, 10, 7)
 
-      // Antenna
-      ctx.strokeStyle = `rgb(${palette.accentRgb})`
-      ctx.lineWidth = 0.8
-      ctx.beginPath()
-      ctx.moveTo(0, -3.5)
-      ctx.lineTo(0, -9)
-      ctx.stroke()
+        ctx.fillStyle = `rgba(${palette.accentRgb},0.5)`
+        ctx.fillRect(-20, -2, 13, 4)
+        ctx.fillRect(7, -2, 13, 4)
 
-      ctx.restore()
-      ctx.restore()
+        ctx.strokeStyle = `rgb(${palette.accentRgb})`
+        ctx.lineWidth = 0.8
+        ctx.beginPath()
+        ctx.moveTo(0, -3.5)
+        ctx.lineTo(0, -9)
+        ctx.stroke()
+
+        ctx.restore()
+        ctx.restore() // orbit
+
+        // Label (in screen coords, stays horizontal)
+        ctx.save()
+        ctx.font = `500 9px monospace`
+        ctx.fillStyle = `rgba(${palette.accentRgb},${isSelected ? 1 : 0.6})`
+        ctx.fillText(sat.name, screenX + 14, screenY - 8)
+        ctx.restore()
+      })
+
+      satPositionsRef.current = newPositions
 
       // ── Data points on globe ──────────────────────────────
       DATA_POINTS.forEach(({ lat, lon }) => {
@@ -315,11 +455,50 @@ export default function EarthGlobe() {
     return () => {
       themeObserver.disconnect()
       cancelAnimationFrame(rafRef.current)
+      canvas.removeEventListener('mousemove', handleMouseMove)
+      canvas.removeEventListener('mouseleave', handleMouseLeave)
+      canvas.removeEventListener('click', handleClick)
+      canvas.removeEventListener('touchstart', handleClick)
     }
   }, [])
 
   return (
-    <canvas ref={canvasRef} className="earth-globe-canvas" />
+    <div className="earth-globe-wrapper">
+      <canvas
+        ref={canvasRef}
+        className="earth-globe-canvas"
+        style={{ cursor: 'crosshair', display: 'block' }}
+      />
+      {selectedSat && (
+        <div
+          className="sat-panel"
+          style={{ left: panelPos.x, top: panelPos.y }}
+        >
+      
+          <div className="sat-panel-name">{selectedSat.name}</div>
+          <div className="sat-panel-owner">{selectedSat.owner}</div>
+          <div className="sat-panel-row">
+            <div className="sat-panel-label">Mission</div>
+            <div className="sat-panel-value">{selectedSat.mission}</div>
+          </div>
+          <div className="sat-panel-row">
+            <div className="sat-panel-label">Launch</div>
+            <div className="sat-panel-value">{selectedSat.launch}</div>
+          </div>
+          <div className="sat-panel-row">
+            <div className="sat-panel-label">Applications</div>
+            <div className="sat-panel-tags">
+              {selectedSat.applications.map(a => (
+                <span key={a} className="sat-panel-tag">{a}</span>
+              ))}
+            </div>
+          </div>
+          <div className="sat-panel-disclaimer">
+            Real satellite — not affiliated with or owned by GRAPHYMA.
+          </div>
+        </div>
+      )}
+    </div>
   )
 }
 

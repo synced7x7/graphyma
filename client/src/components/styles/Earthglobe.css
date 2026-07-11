@@ -2,3 +2,121 @@
   display: block;
   filter: drop-shadow(0 0 60px rgba(var(--accent-rgb),0.22)) drop-shadow(0 0 120px rgba(var(--accent-rgb),0.08));
 }
+
+.earth-globe-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.sat-panel {
+  position: absolute;
+  width: 252px;
+  background: rgba(var(--surface-rgb, 11, 24, 21), 0.5);
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+  border-radius: 16px;
+  padding: 1.4rem 1.5rem;
+  backdrop-filter: blur(14px);
+  z-index: 10;
+  pointer-events: auto;
+  animation: sat-panel-in 0.18s ease;
+}
+
+
+@keyframes sat-panel-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.sat-panel-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.8rem;
+  background: none;
+  border: none;
+  color: rgba(var(--accent-rgb), 0.45);
+  cursor: pointer;
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s;
+}
+.sat-panel-close:hover { color: rgba(var(--accent-rgb), 1); }
+
+.sat-panel-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.sat-panel-owner {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(var(--accent-rgb), 0.75);
+  margin-bottom: 1.1rem;
+}
+
+.sat-panel-row {
+  margin-bottom: 0.8rem;
+}
+
+.sat-panel-label {
+  font-family: var(--font-mono);
+  font-size: 0.57rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0.18rem;
+}
+
+.sat-panel-value {
+  font-size: 0.84rem;
+  color: var(--text-2);
+}
+
+.sat-panel-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.25rem;
+}
+
+.sat-panel-tag {
+  font-size: 0.7rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 20px;
+  background: rgba(var(--accent-rgb), 0.07);
+  border: 1px solid rgba(var(--accent-rgb), 0.15);
+  color: var(--text-2);
+}
+
+.sat-panel-disclaimer {
+  font-size: 0.64rem;
+  color: var(--text-3);
+  border-top: 1px solid rgba(var(--accent-rgb), 0.08);
+  padding-top: 0.75rem;
+  margin-top: 0.9rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .earth-globe-canvas {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 360px;
+  }
+  .earth-globe-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .sat-panel {
+    width: 200px;
+    padding: 1rem 1.1rem;
+    font-size: 0.85em;
+  }
+}
