@@ -14,6 +14,8 @@ const page = {
   exit:    { opacity: 0, y: -30, transition: { duration: 0.35, ease: [0.4, 0, 1, 1] } },
 }
 
+
+
 /* ── Data ──────────────────────────────────────── */
 const SERVICES = [
   {
@@ -199,6 +201,7 @@ export default function Home() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
 
   const [hasScrolled, setHasScrolled] = useState(false)
+  const [hasHoveredSat, setHasHoveredSat] = useState(false)
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.on("change", (value) => {
@@ -308,7 +311,14 @@ export default function Home() {
               transition={{  duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="home-globe-wrap">
-                <EarthGlobe />
+                <EarthGlobe onSatelliteHover={() => setHasHoveredSat(true)} />
+                <div className={`home-globe-hint${hasHoveredSat ? ' home-globe-hint--hidden' : ''}`}>
+                  <svg width="13" height="13" viewBox="0 0 11 11" fill="none">
+                    <circle cx="5.5" cy="5.5" r="4.5" stroke="currentColor" strokeWidth="1" />
+                    <path d="M5.5 4.5v3M5.5 3.5v.5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+                  </svg>
+                  Hover or touch satellites
+                </div>
                 {FLOAT_LABELS.map(({ label, delay, ...pos }) => (
                   <motion.div
                     key={label}

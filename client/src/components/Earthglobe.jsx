@@ -95,7 +95,7 @@ function readThemePalette() {
   return THEME_PALETTES[theme]
 }
 
-export default function EarthGlobe() {
+export default function EarthGlobe({ onSatelliteHover}) {
   const canvasRef = useRef(null)
   const rafRef = useRef(null)
   const [selectedSat, setSelectedSat] = useState(null)
@@ -161,6 +161,7 @@ export default function EarthGlobe() {
         const sat = SATELLITES.find(s => s.id === hit.id)
         selectedSatRef.current = sat
         setSelectedSat(sat)
+        onSatelliteHover?.()
         setPanelPos(computePanelPos(hit))
       }
       // no hit → keep last panel visible
