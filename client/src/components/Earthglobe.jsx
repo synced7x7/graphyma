@@ -110,7 +110,7 @@ export default function EarthGlobe() {
     const ctx = canvas.getContext('2d')
     const paletteRef = { current: readThemePalette() }
     const DPR = window.devicePixelRatio || 1
-    const SIZE = 520
+    const SIZE = 600
     canvas.width = SIZE * DPR
     canvas.height = SIZE * DPR
     canvas.style.width = SIZE + 'px'

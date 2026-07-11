@@ -1,3 +1,5 @@
+
+
 .earth-globe-canvas {
   display: block;
   filter: drop-shadow(0 0 60px rgba(var(--accent-rgb),0.22)) drop-shadow(0 0 120px rgba(var(--accent-rgb),0.08));
@@ -104,19 +106,29 @@
 }
 
 @media (max-width: 600px) {
-  .earth-globe-canvas {
-    width: 100% !important;
-    height: auto !important;
-    max-width: 360px;
-  }
   .earth-globe-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
+    overflow: visible;
   }
+
+  .earth-globe-canvas {
+    width: 100% !important;
+    max-width: 600px;
+    height: auto !important;
+    aspect-ratio: 1 / 1;
+  }
+
   .sat-panel {
     width: 200px;
     padding: 1rem 1.1rem;
     font-size: 0.85em;
+  }
+}
+
+@media (max-width: 200px) {
+  .earth-globe-canvas {
+    max-width: 340px;
   }
 }
