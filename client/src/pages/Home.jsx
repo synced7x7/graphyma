@@ -47,10 +47,10 @@ const SERVICES = [
 ]
 
 const STATS = [
-  { target: 15, suffix: '+',  label: 'Years of EO Expertise',  decimals: 0 },
-  { target: 50, suffix: '+',  label: 'Projects Delivered',     decimals: 0 },
+  { target: 16, suffix: 'TB',  label: 'FREE DATA every day',  decimals: 0 },
+  { target: 3.5, suffix: 'B',  label: 'Billion Market Today',     decimals: 1 },
   { target: 12, suffix: '',   label: 'European Partners',      decimals: 0 },
-  { target: 3,  suffix: 'M+', label: 'Hectares Analysed',      decimals: 0 },
+  { target: 60,  suffix: '%', label: 'Climate Variables Convered',      decimals: 0 },
 ]
 
 const FLOAT_LABELS = [
