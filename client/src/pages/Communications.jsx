@@ -10,10 +10,30 @@ const page = {
 }
 
 const CHANNELS = [
-  { title: 'Stakeholder Mapping', detail: 'Prioritize audiences, incentives, and adoption blockers.' },
-  { title: 'Narrative Design', detail: 'Translate EO complexity into human-ready stories.' },
-  { title: 'Campaign Orchestration', detail: 'Multi-channel delivery and feedback loops.' },
-  { title: 'Impact Measurement', detail: 'Usage analytics and adoption KPIs.' },
+  {
+    step: 'Mapping',
+    title: 'Stakeholder Mapping',
+    detail: 'Prioritize audiences, incentives, and adoption blockers to focus effort where it matters most.',
+    duration: 2.8,
+  },
+  {
+    step: 'Narrative',
+    title: 'Narrative Design',
+    detail: 'Translate EO complexity into human-ready stories that resonate with decision-makers.',
+    duration: 3.05,
+  },
+  {
+    step: 'Campaign',
+    title: 'Campaign Orchestration',
+    detail: 'Multi-channel delivery with continuous feedback loops to maximise reach and relevance.',
+    duration: 3.3,
+  },
+  {
+    step: 'Impact',
+    title: 'Impact Measurement',
+    detail: 'Usage analytics and adoption KPIs that prove the value of every communication effort.',
+    duration: 3.55,
+  },
 ]
 
 export default function Communications() {
@@ -74,7 +94,7 @@ export default function Communications() {
                 transition={{ duration: 0.65, delay: 0.12 }}
                 className="comms-hero-copy"
               >
-                We turn Earth Observation insights into business actions, making the value obvious at every level. 
+                We turn Earth Observation insights into business actions, making the value obvious at every level.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 18 }}
@@ -125,7 +145,7 @@ export default function Communications() {
                     />
                     {/* Rotating belt around the central node */}
                     <motion.g
-            
+
                       transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
                       style={{ transformOrigin: '160px 130px' }}
                     >
@@ -198,7 +218,7 @@ export default function Communications() {
 
       <section className="section">
         <div className="container">
-          <div className="heritage-grid comms-section-grid">
+          <div className="comms-pipeline-header">
             <div>
               <motion.span
                 className="section-label"
@@ -219,60 +239,50 @@ export default function Communications() {
                 From awareness
                 <span className="gradient-text comms-section-title-break">to adoption</span>
               </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.6 }}
-                transition={{ duration: 0.65, delay: 0.12 }}
-                className="comms-section-copy"
-              >
-                We design the communication flow as a system: every touchpoint drives momentum, every insight gets turned into accessible value for your users.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.6 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="comms-channel-list"
-              >
-                {CHANNELS.map((item) => (
-                  <motion.div
-                    key={item.title}
-                    whileHover={{ y: -4 }}
-                    transition={{ duration: 0.3 }}
-                    className="comms-channel-card"
-                  >
-                    <div className="comms-channel-title">{item.title}</div>
-                    <div className="comms-channel-detail">{item.detail}</div>
-                  </motion.div>
-                ))}
-              </motion.div>
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="comms-network-wrap"
+            <motion.p
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.65, delay: 0.12 }}
+              className="comms-pipeline-copy"
             >
-              <div className="comms-stage-card">
-                <div className="comms-stage-list">
-                  {['Awareness', 'Trial', 'Adoption', 'Advocacy'].map((stage, i) => (
-                    <div key={stage} className="comms-stage-row">
-                      <div className="comms-stage-pill">{stage}</div>
-                      <div className="comms-stage-bar">
-                        <motion.div
-                          animate={{ x: ['-110%', '230%'] }}
-                          transition={{ duration: 3 + i * 0.2, repeat: Infinity, ease: 'linear' }}
-                          className="comms-stage-sweep"
-                        />
-                      </div>
-                    </div>
-                  ))}
+              We build communication systems that flow — every interaction drives results, and every insight creates real value for our users.
+            </motion.p>
+          </div>
+
+          <div className="comms-pipeline-list">
+            {CHANNELS.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ delay: i * 0.09, duration: 0.65 }}
+                whileHover={{ y: -3 }}
+                className="comms-pipeline-card"
+              >
+                <div className="comms-pipeline-left">
+                  <div className="comms-pipeline-number">{String(i + 1).padStart(2, '0')}</div>
+                  <div className="comms-pipeline-connector" />
                 </div>
-              </div>
-            </motion.div>
+
+                <div className="comms-pipeline-body">
+                  <div className="comms-pipeline-top">
+                    <div className="comms-pipeline-step">{item.step}</div>
+                    <div className="comms-pipeline-bar">
+                      <motion.div
+                        animate={{ x: ['-110%', '230%'] }}
+                        transition={{ duration: item.duration, repeat: Infinity, ease: 'linear' }}
+                        className="comms-pipeline-sweep"
+                      />
+                    </div>
+                  </div>
+                  <div className="comms-pipeline-title">{item.title}</div>
+                  <div className="comms-pipeline-detail">{item.detail}</div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

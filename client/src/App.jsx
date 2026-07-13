@@ -9,7 +9,6 @@ import Contact from './pages/Contact'
 import RemoteSensing from './pages/RemoteSensing'
 import Communications from './pages/Communications'
 import Trainings from './pages/Trainings'
-import ProjectManagement from './pages/ProjectManagement'
 
 const THEME_COOKIE = 'graphyma-theme'
 
@@ -93,7 +92,6 @@ function AnimatedRoutes() {
         <Route path="/services/remote-sensing" element={<RemoteSensing />} />
         <Route path="/services/communications" element={<Communications />} />
         <Route path="/services/trainings" element={<Trainings />} />
-        <Route path="/services/project-management" element={<ProjectManagement />} />
       </Routes>
     </AnimatePresence>
   )
