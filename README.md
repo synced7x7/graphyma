@@ -49,13 +49,3 @@ The website reflects a vision where advanced satellite-based technologies are tr
 
 Not yet deployed
 
----
-
-## 🔒 License
-
-This is a **private project**.
-
-All rights are reserved. Unauthorized use, copying, modification, or distribution of this code is strictly prohibited.
-
----
-
