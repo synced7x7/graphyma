@@ -19,6 +19,7 @@
   --accent-3: #1d4ed8;
   --accent-dim: rgba(16, 185, 129, 0.12);
   --accent-glow: rgba(16, 185, 129, 0.18);
+  --accent-BW-rgb: 255,255,255;
 
   --text: #0f172a;
   --text-rgb: 15, 23, 42;
@@ -66,6 +67,7 @@
   --accent-3: #6b3da3;
   --accent-dim: rgba(181, 126, 220, 0.1);
   --accent-glow: rgba(181, 126, 220, 0.35);
+  --accent-BW-rgb: 155, 95, 201; 
 
   --text: #f3eef8;
   --text-rgb: 243, 238, 248;
