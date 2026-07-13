@@ -14,8 +14,6 @@ import {
   communicationsImgDark,
   trainingsImgLight,
   trainingsImgDark,
-  projectManagementImgLight,
-  projectManagementImgDark,
 } from '../assets/services/index.js'
 
 /* ── Page variants ─────────────────────────────── */
@@ -50,13 +48,6 @@ const SERVICES = [
     link: '/services/trainings',
     delay: 0.2,
   },
-  {
-    number: '04', icon: 'pm',
-    title: 'Project Management',
-    description: 'Strategic oversight and coordination of Earth Observation projects across public, private, and international stakeholder environments.',
-    link: '/services/project-management',
-    delay: 0.3,
-  },
 ]
 
 const STATS = [
@@ -72,28 +63,6 @@ const FLOAT_LABELS = [
   { label: 'Change Detection',  top: '38%', left: '-12%',  delay: 1.7 },
 ]
 
-const MARKET_FACTS = [
-  {
-    value: '$46.8B',
-    label: 'Projected global satellite market by 2031',
-    sub: 'Driven by EO, geospatial intelligence & remote sensing',
-  },
-  {
-    value: '25%',
-    label: 'Of the global satellite industry',
-    sub: 'Earth Observation is one of the largest segments',
-  },
-  {
-    value: '50%+',
-    label: 'Of EO applications',
-    sub: 'Supporting agriculture, forestry, environmental monitoring & natural resource management',
-  },
-  {
-    value: '60%',
-    label: 'Of Essential Climate Variables',
-    sub: 'Can be addressed by satellite data',
-  },
-]
 
 const ORBIT_NODES = [
   { label: 'ESA',      cx: 80,  cy: 230 },
@@ -118,11 +87,6 @@ const SERVICE_VISUALS = [
     title: 'Trainings',
     imgDark: trainingsImgDark,
     imgLight: trainingsImgLight,
-  },
-  {
-    title: 'Project Management',
-    imgDark: projectManagementImgDark,
-    imgLight: projectManagementImgLight,
   },
 ]
 
@@ -306,52 +270,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-
-      {/* ══════════════════════════════════════
-          MARKET FACTS
-      ══════════════════════════════════════ */}
-      {/* <section className="home-facts-section">
-        <div className="container">
-          <motion.span
-            className="section-label"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            Industry at a Glance
-          </motion.span>
-
-          <motion.h2
-            className="home-facts-title"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.7 }}
-          >
-            The scale of <span className="gradient-text">Earth Observation</span>
-          </motion.h2>
-
-          <div className="home-facts-grid">
-            {MARKET_FACTS.map(({ value, label, sub }, i) => (
-              <motion.div
-                key={value}
-                className="home-fact-card"
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ delay: i * 0.1, duration: 0.65 }}
-              >
-                <div className="home-fact-accent-line" />
-                <div className="home-fact-value">{value}</div>
-                <div className="home-fact-label">{label}</div>
-                <div className="home-fact-sub">{sub}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       {/* ══════════════════════════════════════
           SERVICES

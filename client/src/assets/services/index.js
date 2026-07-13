@@ -4,8 +4,6 @@ import communicationsImgLight from './communications-light.png'
 import communicationsImgDark from './communications-dark.png'
 import trainingsImgLight from './trainings-light.png'
 import trainingsImgDark from './trainings-dark.png'
-import projectManagementImgLight from './project-management-light.png'
-import projectManagementImgDark from './project-management-dark.png'
 
 export {
     remoteSensingImgLight,
@@ -14,6 +12,4 @@ export {
     communicationsImgDark,
     trainingsImgLight,
     trainingsImgDark,
-    projectManagementImgLight,
-    projectManagementImgDark,
 }

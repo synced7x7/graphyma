@@ -10,10 +10,30 @@ const page = {
 }
 
 const MODULES = [
-  { title: 'EO Fundamentals', detail: 'Satellite systems, sensors, and data types.' },
-  { title: 'GIS Platforms', detail: 'QGIS, ArcGIS, and web-based mapping stacks.' },
-  { title: 'Analytics', detail: 'Indices, ML pipelines, and evaluation.' },
-  { title: 'Operational Delivery', detail: 'Dashboards, APIs, and deployment workflows.' },
+  {
+    step: 'Fundamentals',
+    title: 'EO Fundamentals',
+    detail: 'Satellite systems, sensors, and data types — the foundation every practitioner needs.',
+    duration: 2.8,
+  },
+  {
+    step: 'GIS',
+    title: 'GIS Platforms',
+    detail: 'QGIS, ArcGIS, and web-based mapping stacks with hands-on lab exercises.',
+    duration: 3.05,
+  },
+  {
+    step: 'Analytics',
+    title: 'Analytics & ML',
+    detail: 'Indices, machine learning pipelines, and rigorous evaluation frameworks.',
+    duration: 3.3,
+  },
+  {
+    step: 'Delivery',
+    title: 'Operational Delivery',
+    detail: 'Dashboards, APIs, and deployment workflows your team can use from day one.',
+    duration: 3.55,
+  },
 ]
 
 export default function Trainings() {
@@ -176,7 +196,7 @@ export default function Trainings() {
 
       <section className="section">
         <div className="container">
-          <div className="heritage-grid train-section-grid">
+          <div className="train-pipeline-header">
             <div>
               <motion.span
                 className="section-label"
@@ -197,61 +217,50 @@ export default function Trainings() {
                 Modular paths
                 <span className="gradient-text train-section-title-break">that scale</span>
               </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.6 }}
-                transition={{ duration: 0.65, delay: 0.12 }}
-                className="train-section-copy"
-              >
-                Choose standalone modules or build a multi-week programme. Every module includes exercises, datasets, and applied deliverables that your team can use immediately.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.6 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="train-module-list"
-              >
-                {MODULES.map((item) => (
-                  <motion.div
-                    key={item.title}
-                    whileHover={{ y: -4 }}
-                    transition={{ duration: 0.3 }}
-                    className="train-module-card"
-                  >
-                    <div className="train-module-title">{item.title}</div>
-                    <div className="train-module-detail">{item.detail}</div>
-                  </motion.div>
-                ))}
-              </motion.div>
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="train-card-wrap"
+           {/*  <motion.p
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.65, delay: 0.12 }}
+              className="train-pipeline-copy"
             >
-              <div className="train-path-card">
-                <div className="train-path-list">
-                  {['Bootcamp', 'Applied Labs', 'Certification'].map((stage, i) => (
-                    <div key={stage} className="train-path-row">
-                      <div className="train-path-pill">{String(i + 1).padStart(2, '0')}</div>
-                      <div className="train-path-bar">
-                        <motion.div
-                          animate={{ x: ['-110%', '230%'] }}
-                          transition={{ duration: 2.9 + i * 0.2, repeat: Infinity, ease: 'linear' }}
-                          className="train-path-sweep"
-                        />
-                      </div>
-                      <div className="train-path-label">{stage}</div>
-                    </div>
-                  ))}
+              Choose standalone modules or build a multi-week programme. Every module includes exercises, datasets, and applied deliverables your team can use immediately.
+            </motion.p> */}
+          </div>
+
+          <div className="train-pipeline-list">
+            {MODULES.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ delay: i * 0.09, duration: 0.65 }}
+                whileHover={{ y: -3 }}
+                className="train-pipeline-card"
+              >
+                <div className="train-pipeline-left">
+                  <div className="train-pipeline-number">{String(i + 1).padStart(2, '0')}</div>
+                  <div className="train-pipeline-connector" />
                 </div>
-              </div>
-            </motion.div>
+
+                <div className="train-pipeline-body">
+                  <div className="train-pipeline-top">
+                    <div className="train-pipeline-step">{item.step}</div>
+                    <div className="train-pipeline-bar">
+                      <motion.div
+                        animate={{ x: ['-110%', '230%'] }}
+                        transition={{ duration: item.duration, repeat: Infinity, ease: 'linear' }}
+                        className="train-pipeline-sweep"
+                      />
+                    </div>
+                  </div>
+                  <div className="train-pipeline-title">{item.title}</div>
+                  <div className="train-pipeline-detail">{item.detail}</div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

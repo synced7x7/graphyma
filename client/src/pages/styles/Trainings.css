@@ -73,12 +73,7 @@
   background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb),0.7), transparent);
 }
 
-.train-section-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-}
+
 
 .train-section-title {
   font-size: clamp(2rem, 3.4vw, 2.8rem);
@@ -89,89 +84,141 @@
   display: block;
 }
 
-.train-section-copy {
+
+.train-pipeline-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: end;
+  margin-bottom: 3rem;
+}
+
+.train-pipeline-copy {
   color: var(--text-2);
   line-height: 1.85;
-  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  padding-bottom: 0.25rem;
 }
 
-.train-module-list {
+.train-pipeline-list {
   display: grid;
-  gap: 1rem;
+  gap: 0;
 }
 
-.train-module-card {
-  padding: 1rem 1.25rem;
-  border-radius: 16px;
-  border: 1px solid rgba(var(--accent-rgb),0.12);
-  background: rgba(var(--accent-rgb),0.02);
-}
-
-.train-module-title {
-  font-family: var(--font-display);
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 0.4rem;
-}
-
-.train-module-detail {
-  color: var(--text-2);
-  font-size: 0.88rem;
-  line-height: 1.6;
-}
-
-.train-path-card {
-  border-radius: 22px;
-  border: 1px solid rgba(var(--accent-rgb),0.14);
-  background: rgba(var(--accent-rgb),0.025);
-  padding: 2rem;
-}
-
-.train-path-list {
-  display: grid;
-  gap: 1.25rem;
-}
-
-.train-path-row {
+.train-pipeline-card {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  gap: 1.75rem;
+  padding: 1.75rem 1rem;
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.07);
+  border-radius: 12px;
+  cursor: default;
+  transition: background 0.3s;
 }
 
-.train-path-pill {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
-  border: 1px solid rgba(var(--accent-rgb),0.25);
+.train-pipeline-card:first-child {
+  border-top: 1px solid rgba(var(--accent-rgb), 0.07);
+}
+
+.train-pipeline-card:hover {
+  background: rgba(var(--accent-rgb), 0.025);
+}
+
+.train-pipeline-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.train-pipeline-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  background: rgba(var(--accent-rgb), 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+  transition: background 0.3s, border-color 0.3s;
 }
 
-.train-path-bar {
+.train-pipeline-card:hover .train-pipeline-number {
+  background: rgba(var(--accent-rgb), 0.12);
+  border-color: rgba(var(--accent-rgb), 0.55);
+}
+
+.train-pipeline-connector {
+  width: 1px;
   flex: 1;
-  height: 8px;
+  background: rgba(var(--accent-rgb), 0.1);
+  margin: 6px 0;
+}
+
+.train-pipeline-card:last-child .train-pipeline-connector {
+  display: none;
+}
+
+.train-pipeline-body {
+  flex: 1;
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+
+.train-pipeline-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.train-pipeline-step {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+  opacity: 0.75;
+}
+
+.train-pipeline-bar {
+  flex: 1;
+  height: 3px;
   border-radius: 999px;
-  background: rgba(var(--accent-rgb),0.08);
+  background: rgba(var(--accent-rgb), 0.07);
   position: relative;
   overflow: hidden;
 }
 
-.train-path-sweep {
+.train-pipeline-sweep {
   position: absolute;
   inset: 0;
-  width: 45%;
-  background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb),0.5), transparent);
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), 0.55), transparent);
 }
 
-.train-path-label {
-  min-width: 90px;
+.train-pipeline-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.train-pipeline-detail {
   color: var(--text-2);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  font-size: 0.87rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .train-pipeline-header {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }

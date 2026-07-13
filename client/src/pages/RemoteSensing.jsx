@@ -11,26 +11,36 @@ const page = {
 
 const CAPABILITIES = [
   {
-    title: 'Understand Your Needs',
-    detail: 'Aligning Earth Observation solutions with your objectives.',
+    step: 'Acquisition',
+    title: 'Acquisition Strategy',
+    detail: 'Choose the right sensors, providers and datasets for your specific use case and budget.',
+    duration: 2.8,
   },
   {
+    step: 'Identify',
     title: 'Identify the Right EO Data',
-    detail: 'Selecting the most suitable satellite data and platforms.',
+    detail: 'Prepare and organise Earth Observation data from the most relevant platforms and archives.',
+    duration: 3.05,
   },
   {
+    step: 'Analyse',
     title: 'Analyse & Interpret',
-    detail: 'Transforming satellite data into meaningful insights.',
+    detail: 'Extract meaningful insights using advanced processing techniques and domain expertise.',
+    duration: 3.3,
   },
   {
+    step: 'Deliver',
     title: 'Deliver Actionable Insights',
-    detail: 'Clear reports, dashboards, and decision-ready outputs.',
+    detail: 'Verify results, ensure quality and produce decision-ready outputs for your team.',
+    duration: 3.55,
   },
   {
+    step: 'Support',
     title: 'Support & Capacity Building',
-    detail: 'Training teams for confident Earth Observation adoption.',
+    detail: 'Train and upskill your team for confident, long-term Earth Observation adoption.',
+    duration: 3.8,
   },
-];
+]
 
 function SatelliteGraphic() {
   return (
@@ -234,7 +244,7 @@ export default function RemoteSensing() {
 
       <section className="section rs-section">
         <div className="container">
-          <div className="heritage-grid rs-section-grid">
+          <div className="rs-pipeline-header">
             <div>
               <motion.span
                 className="section-label"
@@ -255,61 +265,50 @@ export default function RemoteSensing() {
                 An intelligence pipeline
                 <span className="gradient-text rs-section-title-break">built for clarity</span>
               </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.6 }}
-                transition={{ duration: 0.65, delay: 0.12 }}
-                className="rs-section-copy"
-              >
-                We deliver fast, high-quality insights using a proven process. Most importantly, we adapt our workflow to fit your business decisions, not the other way around.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.6 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="rs-capability-list"
-              >
-                {CAPABILITIES.map((item) => (
-                  <motion.div
-                    key={item.title}
-                    whileHover={{ y: -4 }}
-                    transition={{ duration: 0.3 }}
-                    className="rs-capability-card"
-                  >
-                    <div className="rs-capability-title">{item.title}</div>
-                    <div className="rs-capability-detail">{item.detail}</div>
-                  </motion.div>
-                ))}
-              </motion.div>
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="rs-orbit-wrap rs-stage-align"
+            {/* <motion.p
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.65, delay: 0.12 }}
+              className="rs-pipeline-copy"
             >
-              <div className="rs-stage-card">
-                <div className="rs-stage-list">
-                  {['Understand', 'Identify', 'Analyse', 'Deliver', 'Support'].map((step, i) => (
-                    <div key={step} className="rs-stage-row">
-                      <div className="rs-stage-number">{String(i + 1).padStart(2, '0')}</div>
-                      <div className="rs-stage-bar">
-                        <motion.div
-                          animate={{ x: ['-110%', '230%'] }}
-                          transition={{ duration: 2.8 + i * 0.25, repeat: Infinity, ease: 'linear' }}
-                          className="rs-stage-sweep"
-                        />
-                      </div>
-                      <div className="rs-stage-label">{step}</div>
-                    </div>
-                  ))}
+              We deliver fast, high-quality insights using a proven process — adapted to fit your decisions, not the other way around.
+            </motion.p> */}
+          </div>
+
+          <div className="rs-pipeline-list">
+            {CAPABILITIES.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ delay: i * 0.09, duration: 0.65 }}
+                whileHover={{ y: -3 }}
+                className="rs-pipeline-card"
+              >
+                <div className="rs-pipeline-left">
+                  <div className="rs-pipeline-number">{String(i + 1).padStart(2, '0')}</div>
+                  <div className="rs-pipeline-connector" />
                 </div>
-              </div>
-            </motion.div>
+
+                <div className="rs-pipeline-body">
+                  <div className="rs-pipeline-top">
+                    <div className="rs-pipeline-step">{item.step}</div>
+                    <div className="rs-pipeline-bar">
+                      <motion.div
+                        animate={{ x: ['-110%', '230%'] }}
+                        transition={{ duration: item.duration, repeat: Infinity, ease: 'linear' }}
+                        className="rs-pipeline-sweep"
+                      />
+                    </div>
+                  </div>
+                  <div className="rs-pipeline-title">{item.title}</div>
+                  <div className="rs-pipeline-detail">{item.detail}</div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

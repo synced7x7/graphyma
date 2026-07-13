@@ -207,12 +207,6 @@
   position: relative;
 }
 
-.rs-section-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-}
 
 .rs-section-title {
   font-size: clamp(2rem, 3.4vw, 2.8rem);
@@ -223,93 +217,143 @@
   display: block;
 }
 
-.rs-section-copy {
-  color:var(--text-2);
-  line-height: 1.85;
-  margin-bottom: 2rem;
-}
-
-.rs-capability-list {
+.rs-pipeline-header {
   display: grid;
-  gap: 1rem;
-}
-
-.rs-capability-card {
-  padding: 1rem 1.25rem;
-  border-radius: 16px;
-  border: 1px solid rgba(var(--accent-rgb),0.12);
-  background: rgba(var(--accent-rgb),0.02);
-}
-
-.rs-capability-title {
-  font-family: var(--font-display);
-  font-weight: 700;
-  color: var(--text-1);
-  margin-bottom: 0.4rem;
-}
-
-.rs-capability-detail {
-  color:var(--text-2);
-  font-size: 0.88rem;
-  line-height: 1.6;
-}
-
-.rs-stage-card {
-  border-radius: 22px;
-  border: 1px solid rgba(var(--accent-rgb),0.14);
-  background: rgba(var(--accent-rgb),0.025);
-  padding: 2rem;
-}
-
-.rs-stage-list {
-  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 3rem;
+  align-items: end;
+  margin-bottom: 3rem;
 }
 
-.rs-stage-row {
+.rs-pipeline-copy {
+  color: var(--text-2);
+  line-height: 1.85;
+  font-size: 0.95rem;
+  padding-bottom: 0.25rem;
+}
+
+.rs-pipeline-list {
+  display: grid;
+  gap: 0;
+}
+
+.rs-pipeline-card {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  gap: 1.75rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.07);
+  cursor: default;
+  transition: background 0.3s;
+  border-radius: 12px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.rs-stage-number {
-  width: 36px;
-  height: 36px;
+.rs-pipeline-card:first-child {
+  border-top: 1px solid rgba(var(--accent-rgb), 0.07);
+}
+
+.rs-pipeline-card:hover {
+  background: rgba(var(--accent-rgb), 0.025);
+}
+
+.rs-pipeline-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.rs-pipeline-number {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  border: 1px solid rgba(var(--accent-rgb),0.4);
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  background: rgba(var(--accent-rgb), 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+  transition: background 0.3s, border-color 0.3s;
 }
 
-.rs-stage-bar {
+.rs-pipeline-card:hover .rs-pipeline-number {
+  background: rgba(var(--accent-rgb), 0.12);
+  border-color: rgba(var(--accent-rgb), 0.55);
+}
+
+.rs-pipeline-connector {
+  width: 1px;
   flex: 1;
-  height: 6px;
+  background: rgba(var(--accent-rgb), 0.1);
+  margin: 6px 0;
+}
+
+.rs-pipeline-card:last-child .rs-pipeline-connector {
+  display: none;
+}
+
+.rs-pipeline-body {
+  flex: 1;
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+
+.rs-pipeline-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.rs-pipeline-step {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+  opacity: 0.75;
+}
+
+.rs-pipeline-bar {
+  flex: 1;
+  height: 3px;
   border-radius: 999px;
-  background: rgba(var(--accent-rgb),0.08);
+  background: rgba(var(--accent-rgb), 0.07);
   position: relative;
   overflow: hidden;
 }
 
-.rs-stage-sweep {
+.rs-pipeline-sweep {
   position: absolute;
   inset: 0;
-  width: 45%;
-  background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb),0.5), transparent);
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), 0.55), transparent);
 }
 
-.rs-stage-label {
-  min-width: 90px;
-  color:var(--text-2);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
+.rs-pipeline-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.4rem;
 }
 
-.rs-stage-align {
-  align-self: end;
-  padding-bottom: 2.2rem;
+.rs-pipeline-detail {
+  color: var(--text-2);
+  font-size: 0.87rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .rs-pipeline-header {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
