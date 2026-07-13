@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import './styles/navbar.css'
 import graphymaLogo from '../assets/graphyma_logo1.png'
+import graphymaLogoLight from '../assets/graphyma_logo2.png'
 
 const NAV_LINKS = [
   { path: '/', label: 'Home' },
@@ -40,7 +41,7 @@ export default function Navbar({ theme = 'dark', onThemeToggle }) {
         <Link to="/" className="logo-link">
           <motion.div whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 400 }} className="logo-inner">
             {/* Logo mark */}
-             <img src={graphymaLogo} alt="GRAPHYMA" className="logo-mark" />
+             <img src={theme === 'dark' ? graphymaLogo : graphymaLogoLight} alt="GRAPHYMA" className="logo-mark" />
             <span className="brand-text">GRAPH<span className="brand-accent">YMA</span></span>
           </motion.div>
         </Link>
