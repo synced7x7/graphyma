@@ -172,7 +172,7 @@
 
 .home-stats-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 
@@ -192,7 +192,7 @@
 
 .home-stat-label {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.70rem;
   letter-spacing: 0.15em;
   color: var(--text-3);
   text-transform: uppercase;

@@ -60,11 +60,10 @@ const SERVICES = [
 ]
 
 const STATS = [
-  { target: 16, suffix: 'TB',  label: 'FREE DATA every day',  decimals: 0 },
-  { target: 3.5, suffix: 'B',  label: 'Market Today',     decimals: 1 },
-  { target: 11.5, suffix: 'K+',   label: 'active satellites worldwide',      decimals: 1 },
-  { target: 60,  suffix: '%', label: 'Climate Variables Convered',      decimals: 0 },
-  { target: 1,  suffix: 'T$', label: 'USD market forcast by 2030',      decimals: 0 },
+  { target: 1000, suffix: '+',  label: 'Earth Observation satellites are currently in operation',  decimals: 0 },
+  { target: 950, suffix: '+',  label: 'terabits of data collected every day by EO satellites',     decimals: 0 },
+  { target: 60, suffix: '%',   label: 'Of Essential Climate Variables can be addressed by satellite data',      decimals: 0 },
+  { target: 3,  suffix: 'X', label: 'Growth Increase in satellite deployment since 2020',      decimals: 0 },
 ]
 
 const FLOAT_LABELS = [
@@ -312,7 +311,7 @@ export default function Home() {
       {/* ══════════════════════════════════════
           MARKET FACTS
       ══════════════════════════════════════ */}
-      <section className="home-facts-section">
+      {/* <section className="home-facts-section">
         <div className="container">
           <motion.span
             className="section-label"
@@ -352,7 +351,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ══════════════════════════════════════
           SERVICES

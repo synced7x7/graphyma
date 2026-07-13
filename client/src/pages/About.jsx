@@ -100,7 +100,7 @@ const STORY_PARAS = [
   {
     label: 'What We Do',
     heading: 'Intelligence from orbit',
-    text: 'GRAPHYMA helps organisations understand, adopt, and apply Earth Observation technologies with confidence. From satellite data consultancy and tailored training to implementation support, we guide clients in selecting the right tools, platforms, and workflows to solve real-world challenges. Built on experience with Europe\'s leading Earth Observation programmes, our expertise enables organisations of all sizes to transform satellite data into practical insights for informed decision-making.',
+    text: 'GRAPHYMA offers specialised services in satellite data analysis, digital consultancy, professional training, and project management. Its Earth Observation expertise allows the company to develop tailored solutions for environmental challenges, while its broader technological perspective supports clients in digital transformation, operational efficiency, and data-informed planning.',
   },
   {
     label: 'Our Ambition',
@@ -422,7 +422,7 @@ export default function About() {
                 Ready to work with us?
               </h2>
               <p className="about-cta-copy">
-                Whether you are an institution, company, or research body, GRAPHYMA can help you understand the value of Earth observation.
+                Whether you are an institution, company, or research body, GRAPHYMA can help!
               </p>
             </div>
             <div className="about-cta-actions">
