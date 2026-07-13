@@ -14,8 +14,6 @@ import {
   communicationsImgDark,
   trainingsImgLight,
   trainingsImgDark,
-  projectManagementImgLight,
-  projectManagementImgDark,
 } from '../assets/services/index.js'
 
 /* ── Page variants ─────────────────────────────── */
@@ -50,13 +48,13 @@ const SERVICES = [
     link: '/services/trainings',
     delay: 0.2,
   },
-  {
+  /* {
     number: '04', icon: 'pm',
     title: 'Project Management',
     description: 'Strategic oversight and coordination of Earth Observation projects across public, private, and international stakeholder environments.',
     link: '/services/project-management',
     delay: 0.3,
-  },
+  }, */
 ]
 
 const STATS = [
@@ -72,7 +70,7 @@ const FLOAT_LABELS = [
   { label: 'Change Detection',  top: '38%', left: '-12%',  delay: 1.7 },
 ]
 
-const MARKET_FACTS = [
+/* const MARKET_FACTS = [
   {
     value: '$46.8B',
     label: 'Projected global satellite market by 2031',
@@ -93,7 +91,7 @@ const MARKET_FACTS = [
     label: 'Of Essential Climate Variables',
     sub: 'Can be addressed by satellite data',
   },
-]
+] */
 
 const ORBIT_NODES = [
   { label: 'ESA',      cx: 80,  cy: 230 },
@@ -119,11 +117,11 @@ const SERVICE_VISUALS = [
     imgDark: trainingsImgDark,
     imgLight: trainingsImgLight,
   },
-  {
+  /* {
     title: 'Project Management',
     imgDark: projectManagementImgDark,
     imgLight: projectManagementImgLight,
-  },
+  }, */
 ]
 
 
