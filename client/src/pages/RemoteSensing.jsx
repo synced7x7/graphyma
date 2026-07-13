@@ -266,7 +266,7 @@ export default function RemoteSensing() {
                 <span className="gradient-text rs-section-title-break">built for clarity</span>
               </motion.h2>
             </div>
-            <motion.p
+            {/* <motion.p
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.6 }}
@@ -274,7 +274,7 @@ export default function RemoteSensing() {
               className="rs-pipeline-copy"
             >
               We deliver fast, high-quality insights using a proven process — adapted to fit your decisions, not the other way around.
-            </motion.p>
+            </motion.p> */}
           </div>
 
           <div className="rs-pipeline-list">

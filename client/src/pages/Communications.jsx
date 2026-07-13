@@ -240,7 +240,7 @@ export default function Communications() {
                 <span className="gradient-text comms-section-title-break">to adoption</span>
               </motion.h2>
             </div>
-            <motion.p
+            {/* <motion.p
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.6 }}
@@ -248,7 +248,7 @@ export default function Communications() {
               className="comms-pipeline-copy"
             >
               We build communication systems that flow — every interaction drives results, and every insight creates real value for our users.
-            </motion.p>
+            </motion.p> */}
           </div>
 
           <div className="comms-pipeline-list">

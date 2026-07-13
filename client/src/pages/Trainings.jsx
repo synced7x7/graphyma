@@ -218,7 +218,7 @@ export default function Trainings() {
                 <span className="gradient-text train-section-title-break">that scale</span>
               </motion.h2>
             </div>
-            <motion.p
+           {/*  <motion.p
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.6 }}
@@ -226,7 +226,7 @@ export default function Trainings() {
               className="train-pipeline-copy"
             >
               Choose standalone modules or build a multi-week programme. Every module includes exercises, datasets, and applied deliverables your team can use immediately.
-            </motion.p>
+            </motion.p> */}
           </div>
 
           <div className="train-pipeline-list">
