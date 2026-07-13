@@ -263,7 +263,7 @@
 
 .rs-stage-list {
   display: grid;
-  gap: 1rem;
+  gap: 3rem;
 }
 
 .rs-stage-row {
@@ -309,3 +309,7 @@
   letter-spacing: 0.12em;
 }
 
+.rs-stage-align {
+  align-self: end;
+  padding-bottom: 2.2rem;
+}

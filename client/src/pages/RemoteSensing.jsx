@@ -10,11 +10,27 @@ const page = {
 }
 
 const CAPABILITIES = [
-  { title: 'Acquisition Strategy', detail: 'Right sensors, right revisit, right data.' },
-  { title: 'Pre-processing', detail: 'Radiometric, geometric, and atmospheric corrections.' },
-  { title: 'Analytics & Models', detail: 'Indices, ML pipelines, and change detection.' },
-  { title: 'Decision Layers', detail: 'Actionable maps and executive-ready outputs.' },
-]
+  {
+    title: 'Understand Your Needs',
+    detail: 'Aligning Earth Observation solutions with your objectives.',
+  },
+  {
+    title: 'Identify the Right EO Data',
+    detail: 'Selecting the most suitable satellite data and platforms.',
+  },
+  {
+    title: 'Analyse & Interpret',
+    detail: 'Transforming satellite data into meaningful insights.',
+  },
+  {
+    title: 'Deliver Actionable Insights',
+    detail: 'Clear reports, dashboards, and decision-ready outputs.',
+  },
+  {
+    title: 'Support & Capacity Building',
+    detail: 'Training teams for confident Earth Observation adoption.',
+  },
+];
 
 function SatelliteGraphic() {
   return (
@@ -111,7 +127,7 @@ export default function RemoteSensing() {
                 transition={{ duration: 0.65, delay: 0.12 }}
                 className="rs-hero-copy"
               >
-                We design end-to-end remote sensing workflows that translate complex satellite data into operational decisions. From sensor selection to advanced analytics, every step is tuned for your mission and timeframe.
+                We design remote sensing consultancy strategies that integrate directly into our clients' workflows
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 18 }}
@@ -246,7 +262,7 @@ export default function RemoteSensing() {
                 transition={{ duration: 0.65, delay: 0.12 }}
                 className="rs-section-copy"
               >
-                Every project is built on a proven pipeline that compresses time-to-insight while preserving data quality. We align the pipeline to your operational decisions, not the other way around.
+                We deliver fast, high-quality insights using a proven process. Most importantly, we adapt our workflow to fit your business decisions, not the other way around.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 18 }}
@@ -274,11 +290,11 @@ export default function RemoteSensing() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="rs-orbit-wrap"
+              className="rs-orbit-wrap rs-stage-align"
             >
               <div className="rs-stage-card">
                 <div className="rs-stage-list">
-                  {['Ingest', 'Normalize', 'Analyze', 'Validate', 'Deploy'].map((step, i) => (
+                  {['Understand', 'Identify', 'Analyse', 'Deliver', 'Support'].map((step, i) => (
                     <div key={step} className="rs-stage-row">
                       <div className="rs-stage-number">{String(i + 1).padStart(2, '0')}</div>
                       <div className="rs-stage-bar">
