@@ -348,7 +348,7 @@
   font-family: var(--font-mono);
   font-size: 0.58rem;
   letter-spacing: 0.14em;
-  color: rgba(var(--accent-rgb), 0.6);
+  color: rgb(var(--accent-BW-rgb));
   text-transform: uppercase;
   z-index: 1;
 }
