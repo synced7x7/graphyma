@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import Navbar from './components/navbar'
 import Footer from './components/footer'
 import Home from './pages/Home'
@@ -116,6 +117,7 @@ export default function App() {
       <Navbar theme={theme} onThemeToggle={() => setTheme(current => (current === 'dark' ? 'light' : 'dark'))} />
       <AnimatedRoutes />
       <Footer />
+      <SpeedInsights />
     </BrowserRouter>
   )
 }
