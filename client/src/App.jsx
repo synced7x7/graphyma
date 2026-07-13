@@ -14,11 +14,11 @@ import ProjectManagement from './pages/ProjectManagement'
 const THEME_COOKIE = 'graphyma-theme'
 
 function readThemeCookie() {
-  if (typeof document === 'undefined') return 'dark'
+  if (typeof document === 'undefined') return 'light'
 
   const match = document.cookie.match(new RegExp(`(?:^|; )${THEME_COOKIE}=([^;]*)`))
   const value = match ? decodeURIComponent(match[1]) : ''
-  return value === 'light' ? 'light' : 'dark'
+  return value === 'dark' ? 'dark' : 'light'
 }
 
 function writeThemeCookie(theme) {

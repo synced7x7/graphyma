@@ -100,7 +100,7 @@ const STORY_PARAS = [
   {
     label: 'What We Do',
     heading: 'Intelligence from orbit',
-    text: 'At its core, GRAPHYMA offers specialised services in satellite data analysis, digital consultancy, professional training, and project management. Its Earth Observation expertise allows the company to develop tailored solutions for environmental challenges, while its broader technological perspective supports clients in digital transformation, operational efficiency, and data-informed planning.',
+    text: 'GRAPHYMA offers specialised services in satellite data analysis, digital consultancy, professional training, and project management. Its Earth Observation expertise allows the company to develop tailored solutions for environmental challenges, while its broader technological perspective supports clients in digital transformation, operational efficiency, and data-informed planning.',
   },
   {
     label: 'Our Ambition',
@@ -161,7 +161,7 @@ export default function About() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="about-hero-copy"
           >
-            GRAPHYMA is not only a startup with technical expertise, but a growing platform for connecting Earth Observation with the challenges and opportunities of the real world.
+            GRAPYMA is a startup that combines technical expertise with communication and user uptake experience, merging deep science with clear and accessible communication
           </motion.p>
         </div>
       </section>
@@ -235,7 +235,7 @@ export default function About() {
       {/* ══════════════════════════════════════
           CAPABILITIES
       ══════════════════════════════════════ */}
-      <section id="pillars" className="section about-pillars-section">
+      {/* <section id="pillars" className="section about-pillars-section">
         <div className="glow-tl" />
         <div className="container">
           <div className="about-pillars-header">
@@ -288,7 +288,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ══════════════════════════════════════
           VALUES
@@ -364,7 +364,7 @@ export default function About() {
       {/* ══════════════════════════════════════
           EXPERTISE BADGES
       ══════════════════════════════════════ */}
-      <section className="about-badges-section">
+      {/* <section className="about-badges-section">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -403,7 +403,7 @@ export default function About() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* ══════════════════════════════════════
           CTA
@@ -422,7 +422,7 @@ export default function About() {
                 Ready to work with us?
               </h2>
               <p className="about-cta-copy">
-                Whether you are an institution, company, or research body — GRAPHYMA can help you unlock the value of Earth Observation.
+                Whether you are an institution, company, or research body, GRAPHYMA can help!
               </p>
             </div>
             <div className="about-cta-actions">

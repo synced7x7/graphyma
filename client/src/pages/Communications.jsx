@@ -74,7 +74,7 @@ export default function Communications() {
                 transition={{ duration: 0.65, delay: 0.12 }}
                 className="comms-hero-copy"
               >
-                We turn technical capability into measurable uptake. Our communication strategy connects EO outputs to real-world decisions, making the value obvious to every stakeholder.
+                We turn Earth Observation insights into business actions, making the value obvious at every level. 
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 18 }}

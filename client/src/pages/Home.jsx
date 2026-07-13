@@ -60,11 +60,10 @@ const SERVICES = [
 ]
 
 const STATS = [
-  { target: 16, suffix: 'TB',  label: 'FREE DATA every day',  decimals: 0 },
-  { target: 3.5, suffix: 'B',  label: 'Market Today',     decimals: 1 },
-  { target: 11.5, suffix: 'K+',   label: 'active satellites worldwide',      decimals: 1 },
-  { target: 60,  suffix: '%', label: 'Climate Variables Convered',      decimals: 0 },
-  { target: 1,  suffix: 'T$', label: 'USD market forcast by 2030',      decimals: 0 },
+  { target: 1000, suffix: '+',  label: 'Earth Observation satellites are currently in operation',  decimals: 0 },
+  { target: 950, suffix: '+',  label: 'terabits of data collected every day by EO satellites',     decimals: 0 },
+  { target: 60, suffix: '%',   label: 'Of Essential Climate Variables can be addressed by satellite data',      decimals: 0 },
+  { target: 3,  suffix: 'X', label: 'Growth Increase in satellite deployment since 2020',      decimals: 0 },
 ]
 
 const FLOAT_LABELS = [
@@ -312,7 +311,7 @@ export default function Home() {
       {/* ══════════════════════════════════════
           MARKET FACTS
       ══════════════════════════════════════ */}
-      <section className="home-facts-section">
+      {/* <section className="home-facts-section">
         <div className="container">
           <motion.span
             className="section-label"
@@ -352,7 +351,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ══════════════════════════════════════
           SERVICES
@@ -375,15 +374,6 @@ export default function Home() {
               Specialised services<br />
               <span className="gradient-text">built for impact</span>
             </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.7 }}
-              className="home-services-copy"
-            >
-              We provide specialised services that combine technical expertise, communication, training, and strategic support.
-            </motion.p>
           </div>
 
           {/* Service image cards (static visuals) */}
@@ -454,7 +444,6 @@ export default function Home() {
                   {/* Satellite dots on outer ring */}
                   <circle cx="230" cy="34"  r="5" fill="var(--accent)" opacity="0.6" />
                   <circle cx="426" cy="230" r="4" fill="var(--accent)" opacity="0.45" />
-                  <circle cx="134" cy="395" r="5" fill="var(--accent)" opacity="0.55" />
                 </svg>
 
                 {/* Node labels */}
@@ -462,7 +451,7 @@ export default function Home() {
                   { label: 'ESA',       top: '47%', left: '5%'  },
                   { label: 'Copernicus',top: '9%',  left: '62%' },
                   { label: 'EUMETSAT', top: '65%', left: '77%' },
-                  { label: 'JRC',      top: '78%', left: '20%' },
+                  { label: 'ECMWF',      top: '78%', left: '20%' },
                   { label: 'GRAPHYMA', top: '45%', left: '41%' },
                 ].map(({ label, top, left }) => (
                   <div
@@ -486,14 +475,14 @@ export default function Home() {
               <span className="section-label">Our Heritage</span>
               <h2 className="home-heritage-title">
                 A legacy shaped by<br />
-                <span className="gradient-text">Europe's most trusted</span><br />
-                EO entities
+                <span className="gradient-text">Helping organizations unlock the power of</span><br />
+                Earth Observation
               </h2>
               <p className="home-heritage-copy">
-                We inherit a legacy of expertise, shaped by our team's years of collaboration with Europe's most trusted Earth Observation entities — from ESA and Copernicus to EUMETSAT and JRC.
+                Whether you're a startup, public institution, research organization, or enterprise, we help you navigate the Earth Observation ecosystem with confidence. Our team combines years of experience across Europe's leading EO programmes to transform complex satellite technologies into practical solutions tailored to your goals.
               </p>
               <p className="home-heritage-copy">
-                This foundation gives us a unique vantage point: we understand both the technical depth of satellite systems and the practical needs of the organisations that depend on them.
+                From identifying the right data and platforms to designing workflows, delivering training, and supporting implementation, we make Earth Observation accessible to organizations of every size and level of expertise.
               </p>
 
               {/* Tags */}

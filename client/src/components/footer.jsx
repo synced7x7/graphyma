@@ -47,9 +47,13 @@ export default function Footer() {
           <div>
             <p className="footer-section-title">Services</p>
             <nav className="footer-nav">
-              {['Remote Sensing', 'Communications', 'Trainings', 'Project Management'].map(s => (
-                <Link key={s} to={`/services/${s.toLowerCase().replace(' ', '-')}`} className="footer-link">
-                  {s}
+              {[
+                { label: 'Consultancy', to: '/services/remote-sensing' },
+                { label: 'User Uptake', to: '/services/communications' },
+                { label: 'Trainings', to: '/services/trainings' },
+              ].map(({ label, to }) => (
+                <Link key={label} to={to} className="footer-link">
+                  {label}
                 </Link>
               ))}
             </nav>
