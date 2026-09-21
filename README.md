@@ -11,7 +11,7 @@
 <br>
 
 <p align="center">
-  <a href="https://graphyma-v6f3.vercel.app/">
+  <a href="https://graphyma.com/">
     <img src="https://img.shields.io/badge/Live_Website-111827?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Website">
   </a>
 </p>
