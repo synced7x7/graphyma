@@ -47,5 +47,5 @@ The website reflects a vision where advanced satellite-based technologies are tr
 
 ## 🌐 Deployment
 
-Not yet deployed
+Fully deployed (9/21/2026 1.26PM)
 
