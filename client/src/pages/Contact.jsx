@@ -11,11 +11,14 @@ const page = {
   exit:    { opacity: 0, transition: { duration: 0.35 } },
 }
 
+// Configurable recipient email for contact form submissions
+const RECIPIENT_EMAIL = 'tasnifemran@gmail.com'
+
 /* ── Info cards data ───────────────────────────── */
 const INFO_CARDS = [
   {
     label: 'Email',
-    value: 'info@graphyma.eu',
+    value: RECIPIENT_EMAIL,
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" strokeWidth="1.4"/>
@@ -37,7 +40,7 @@ const INFO_CARDS = [
   },
   {
     label: 'Response Time',
-    value: 'Within 48h',
+    value: 'Within 12h',
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <circle cx="10" cy="10" r="8" stroke="currentColor" strokeWidth="1.4"/>
@@ -51,7 +54,6 @@ const SERVICES_OPTIONS = [
   'Remote Sensing Consultancy',
   'Communications & User Uptake',
   'Trainings',
-  'Project Management',
   'General Enquiry',
 ]
 
@@ -119,10 +121,47 @@ export default function Contact() {
     setForm(f => ({ ...f, [e.target.name]: e.target.value }))
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     setLoading(true)
-    setTimeout(() => { setLoading(false); setSent(true) }, 1600)
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          organisation: form.organisation || 'N/A',
+          service: form.service || 'General Enquiry',
+          message: form.message,
+          _subject: `New Graphyma Contact Submission from ${form.name}`,
+          _captcha: 'false',
+        }),
+      })
+
+      if (response.ok) {
+        setSent(true)
+      } else {
+        // Fallback to mailto link if request fails
+        window.location.href = `mailto:${RECIPIENT_EMAIL}?subject=Graphyma Inquiry from ${encodeURIComponent(form.name)}&body=${encodeURIComponent(
+          `Name: ${form.name}\nEmail: ${form.email}\nOrganisation: ${form.organisation || 'N/A'}\nService: ${form.service || 'General Enquiry'}\n\nMessage:\n${form.message}`
+        )}`
+        setSent(true)
+      }
+    } catch (err) {
+      console.error('Email submission error:', err)
+      // Fallback to mailto link
+      window.location.href = `mailto:${RECIPIENT_EMAIL}?subject=Graphyma Inquiry from ${encodeURIComponent(form.name)}&body=${encodeURIComponent(
+        `Name: ${form.name}\nEmail: ${form.email}\nOrganisation: ${form.organisation || 'N/A'}\nService: ${form.service || 'General Enquiry'}\n\nMessage:\n${form.message}`
+      )}`
+      setSent(true)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -214,7 +253,7 @@ export default function Contact() {
                       </div>
                       <h3 className="contact-success-title">Message Sent</h3>
                       <p className="contact-success-copy">
-                        Thank you for reaching out. Our team will get back to you within 48 hours.
+                        Thank you for reaching out. Our team will get back to you within 12 hours.
                       </p>
                       <button
                         onClick={() => { setSent(false); setForm({ name: '', email: '', organisation: '', service: '', message: '' }) }}
