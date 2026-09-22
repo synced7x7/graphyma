@@ -12,7 +12,7 @@ const page = {
 }
 
 // Configurable recipient email for contact form submissions
-const RECIPIENT_EMAIL = 'tasnifemran@gmail.com'
+const RECIPIENT_EMAIL = 'Info@graphyma.com'
 
 /* ── Info cards data ───────────────────────────── */
 const INFO_CARDS = [
